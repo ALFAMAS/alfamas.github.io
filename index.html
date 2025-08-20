@@ -82,6 +82,59 @@
         backdrop-filter: blur(20px);
         background: rgba(255, 255, 255, 0.95);
       }
+
+      /* Mobile Menu Animation */
+      .mobile-menu-enter {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+
+      .mobile-menu-enter-active {
+        transform: translateY(0);
+        opacity: 1;
+        transition: all 0.3s ease-out;
+      }
+
+      .mobile-menu-exit {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .mobile-menu-exit-active {
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: all 0.3s ease-in;
+      }
+
+      /* Hamburger Animation */
+      .hamburger-line {
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      .hamburger-active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger-active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      /* Improved responsive typography */
+      @media (max-width: 640px) {
+        .responsive-title {
+          font-size: 2.5rem;
+          line-height: 1.2;
+        }
+
+        .responsive-subtitle {
+          font-size: 1.25rem;
+        }
+      }
     </style>
   </head>
   <body class="scroll-smooth">
@@ -95,13 +148,13 @@
           <!-- Logo -->
           <a
             href="#"
-            class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300"
+            class="text-xl sm:text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300"
           >
             ALFAMAS
           </a>
 
           <!-- Desktop Navigation -->
-          <div class="hidden md:flex space-x-8">
+          <div class="hidden md:flex space-x-6 lg:space-x-8">
             <a
               href="#home"
               class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
@@ -160,17 +213,18 @@
 
           <!-- Mobile Menu Button -->
           <button
-            class="md:hidden flex flex-col space-y-1 group"
+            class="md:hidden flex flex-col space-y-1.5 group p-2"
             onclick="toggleMobileMenu()"
+            id="hamburger-btn"
           >
             <span
-              class="w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
+              class="hamburger-line w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
             ></span>
             <span
-              class="w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
+              class="hamburger-line w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
             ></span>
             <span
-              class="w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
+              class="hamburger-line w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
             ></span>
           </button>
         </div>
@@ -178,38 +232,44 @@
 
       <!-- Mobile Menu -->
       <div
-        class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200"
+        class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-lg"
         id="mobile-menu"
       >
-        <div class="px-4 py-3 space-y-3">
+        <div class="px-4 py-3 space-y-1">
           <a
             href="#home"
-            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+            onclick="closeMobileMenu()"
             >Home</a
           >
           <a
             href="#about"
-            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+            onclick="closeMobileMenu()"
             >About</a
           >
           <a
             href="#services"
-            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+            onclick="closeMobileMenu()"
             >Services</a
           >
           <a
             href="#skills"
-            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+            onclick="closeMobileMenu()"
             >Skills</a
           >
           <a
             href="#portfolio"
-            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+            onclick="closeMobileMenu()"
             >Portfolio</a
           >
           <a
             href="#contact"
-            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
+            onclick="closeMobileMenu()"
             >Contact</a
           >
         </div>
@@ -218,7 +278,7 @@
 
     <!-- Hero Section -->
     <section
-      class="min-h-screen gradient-bg flex items-center relative overflow-hidden"
+      class="pt-16 min-h-screen gradient-bg flex items-center relative overflow-hidden"
       id="home"
     >
       <!-- Background Pattern -->
@@ -233,35 +293,39 @@
 
       <!-- Floating Elements -->
       <div
-        class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"
+        class="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-white/10 rounded-full animate-float"
       ></div>
       <div
-        class="absolute top-40 right-20 w-16 h-16 bg-yellow-400/20 rounded-full animate-float"
+        class="absolute top-40 right-4 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400/20 rounded-full animate-float"
         style="animation-delay: 1s"
       ></div>
       <div
-        class="absolute bottom-20 left-20 w-24 h-24 bg-blue-400/10 rounded-full animate-float"
+        class="absolute bottom-20 left-4 sm:left-20 w-20 h-20 sm:w-24 sm:h-24 bg-blue-400/10 rounded-full animate-float"
         style="animation-delay: 2s"
       ></div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <!-- Hero Content -->
-          <div class="text-white space-y-6 fade-in-up">
+          <div class="text-white space-y-6 fade-in-up text-center lg:text-left">
             <div class="space-y-4">
-              <p class="text-lg text-white/80 font-medium">
+              <p class="text-base sm:text-lg text-white/80 font-medium">
                 👋 Hello, my name is
               </p>
-              <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+              <h1
+                class="responsive-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              >
                 <span class="text-yellow-400">MAS Yasin Arafat</span>
                 <div class="inline-flex items-center ml-2">
                   <i
-                    class="fas fa-check-circle text-blue-400 text-2xl"
+                    class="fas fa-check-circle text-blue-400 text-xl sm:text-2xl"
                     title="Verified Professional"
                   ></i>
                 </div>
               </h1>
-              <div class="text-xl md:text-2xl text-white/90 mb-2">
+              <div
+                class="responsive-subtitle text-lg sm:text-xl md:text-2xl text-white/90 mb-2"
+              >
                 And I'm a
                 <span
                   class="text-yellow-400 font-semibold typing-cursor"
@@ -269,10 +333,12 @@
                   >Developer & Travel Tech Expert</span
                 >
               </div>
-              <div class="text-lg text-white/80 font-medium mb-4">
+              <div class="text-base sm:text-lg text-white/80 font-medium mb-4">
                 Travel Tech | Payment Gateway Integration Specialist
               </div>
-              <p class="text-lg text-white/80 max-w-2xl leading-relaxed">
+              <p
+                class="text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed mx-auto lg:mx-0"
+              >
                 Enthusiastic travel technology expert specializing in GDS, NDC,
                 payment gateway integrations, and API development. Leading
                 innovative solutions in the travel industry with expertise in
@@ -281,10 +347,12 @@
             </div>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <div
+              class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start"
+            >
               <a
                 href="#portfolio"
-                class="glass-effect border border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
+                class="glass-effect border border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
               >
                 <i
                   class="fas fa-eye group-hover:scale-110 transition-transform duration-300"
@@ -293,7 +361,7 @@
               </a>
               <a
                 href="#contact"
-                class="bg-transparent border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
+                class="bg-transparent border-2 border-white/50 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
               >
                 <i
                   class="fas fa-envelope group-hover:scale-110 transition-transform duration-300"
@@ -303,52 +371,22 @@
             </div>
 
             <!-- Social Links -->
-            <div class="flex gap-4 pt-6">
-              <a
-                href="https://github.com/alfamas"
-                target="_blank"
-                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
-              >
-                <i
-                  class="fab fa-github text-xl group-hover:scale-125 transition-transform duration-300"
-                ></i>
-              </a>
-              <a
-                href="https://www.fb.com/masyasinarafat"
-                target="_blank"
-                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
-              >
-                <i
-                  class="fab fa-facebook text-xl group-hover:scale-125 transition-transform duration-300"
-                ></i>
-              </a>
-              <a
-                href="#"
-                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
-              >
-                <i
-                  class="fab fa-linkedin text-xl group-hover:scale-125 transition-transform duration-300"
-                ></i>
-              </a>
-              <a
-                href="#"
-                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
-              >
-                <i
-                  class="fab fa-twitter text-xl group-hover:scale-125 transition-transform duration-300"
-                ></i>
-              </a>
+            <div
+              class="flex gap-4 pt-6 justify-center lg:justify-start"
+              id="hero-social-links"
+            >
+              <!-- Social links will be populated by JavaScript -->
             </div>
           </div>
 
           <!-- Hero Image -->
           <div
-            class="flex justify-center lg:justify-end fade-in-up"
+            class="flex justify-center lg:justify-end fade-in-up order-first lg:order-last"
             style="animation-delay: 0.3s"
           >
             <div class="relative">
               <div
-                class="w-80 h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-700 hover:scale-105 group"
+                class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-700 hover:scale-105 group"
               >
                 <img
                   src="images/pp1.jpg"
@@ -361,7 +399,7 @@
               </div>
               <!-- Floating Badge -->
               <div
-                class="absolute -bottom-6 -right-6 bg-white text-gray-800 px-4 py-2 rounded-full shadow-lg font-semibold text-sm animate-bounce"
+                class="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-white text-gray-800 px-3 sm:px-4 py-2 rounded-full shadow-lg font-semibold text-xs sm:text-sm animate-bounce"
               >
                 💻 Available for work
               </div>
@@ -371,7 +409,7 @@
 
         <!-- Scroll Indicator -->
         <div
-          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce"
+          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce hidden sm:block"
         >
           <div class="flex flex-col items-center gap-2">
             <span class="text-sm">Scroll down</span>
@@ -382,23 +420,25 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-20 bg-gray-50" id="about">
+    <section class="py-16 sm:py-20 bg-gray-50" id="about">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          >
             About Me
           </h2>
           <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
             Get to know more about my journey, skills, and passion for
             technology
           </p>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <!-- About Image -->
-          <div class="relative group">
+          <div class="relative group order-last lg:order-first">
             <div class="w-full max-w-lg mx-auto">
               <div class="relative overflow-hidden rounded-2xl">
                 <img
@@ -412,28 +452,28 @@
               </div>
               <!-- Decorative Elements -->
               <div
-                class="absolute -top-4 -right-4 w-20 h-20 bg-yellow-400 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
+                class="absolute -top-4 -right-4 w-16 h-16 sm:w-20 sm:h-20 bg-yellow-400 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
               ></div>
               <div
-                class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-600 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
+                class="absolute -bottom-4 -left-4 w-12 h-12 sm:w-16 sm:h-16 bg-blue-600 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
               ></div>
             </div>
           </div>
 
           <!-- About Content -->
-          <div class="space-y-8">
+          <div class="space-y-6 sm:space-y-8">
             <div>
-              <h3 class="text-3xl font-bold text-blue-600 mb-6">
-                CTO & Travel Technology Expert
+              <h3
+                class="text-2xl sm:text-3xl font-bold text-blue-600 mb-4 sm:mb-6"
+              >
+                Travel Technology Expert
               </h3>
-              <div class="space-y-4 text-gray-600 leading-relaxed text-lg">
+              <div
+                class="space-y-4 text-gray-600 leading-relaxed text-base sm:text-lg"
+              >
                 <p>
                   I am an enthusiastic, self-motivated, and hardworking
-                  individual with a relentless drive for excellence. As CTO of
-                  Ticketemet.com, I thrive in competitive environments,
-                  demonstrating strong leadership, unwavering confidence in
-                  decision-making, and the ability to perform exceptionally well
-                  under pressure.
+                  individual with a relentless drive for excellence.
                 </p>
                 <p>
                   My expertise spans across
@@ -444,132 +484,137 @@
                   architectures. I'm an OTA expert specializing in travel
                   technology solutions.
                 </p>
-                <p>
-                  With a creative and industrious mindset, I am constantly
-                  exploring new ideas, embracing challenges, and transforming
-                  insights into impactful solutions. My passion for continuous
-                  learning and innovation fuels my ability to inspire others,
-                  foster collaboration, and drive meaningful change in the
-                  travel industry.
+              </div>
+            </div>
+          </div>
+
+          <!-- Education & Skills -->
+          <div
+            class="p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100"
+          >
+            <h4 class="text-lg font-bold text-gray-900 mb-4">
+              Education & Top Skills
+            </h4>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-semibold text-blue-600 mb-2">🎓 Education</h5>
+                <p class="text-gray-700 text-sm sm:text-base">
+                  Bachelor of Business Information Systems
+                </p>
+                <p class="text-xs sm:text-sm text-gray-600">
+                  Torrens University Australia
                 </p>
               </div>
 
-              <!-- Education & Skills -->
-              <div
-                class="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100"
-              >
-                <h4 class="text-lg font-bold text-gray-900 mb-4">
-                  Education & Top Skills
-                </h4>
-                <div class="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h5 class="font-semibold text-blue-600 mb-2">
-                      🎓 Education
-                    </h5>
-                    <p class="text-gray-700">
-                      Bachelor of Business Information Systems
-                    </p>
-                    <p class="text-sm text-gray-600">
-                      Torrens University Australia
-                    </p>
-                  </div>
-                  <div>
-                    <h5 class="font-semibold text-blue-600 mb-2">
-                      🚀 Top Skills
-                    </h5>
-                    <div class="flex flex-wrap gap-2">
-                      <span
-                        class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm"
-                        >Sales & Marketing</span
-                      >
-                      <span
-                        class="bg-green-100 text-green-700 px-2 py-1 rounded text-sm"
-                        >Team Management</span
-                      >
-                      <span
-                        class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-sm"
-                        >Problem Solving</span
-                      >
-                      <span
-                        class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-sm"
-                        >Communication</span
-                      >
-                      <span
-                        class="bg-red-100 text-red-700 px-2 py-1 rounded text-sm"
-                        >Team Leadership</span
-                      >
-                    </div>
-                  </div>
+              <div>
+                <h5 class="font-semibold text-blue-600 mb-2">🚀 Top Skills</h5>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs sm:text-sm"
+                    >Sales & Marketing</span
+                  >
+                  <span
+                    class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs sm:text-sm"
+                    >Team Management</span
+                  >
+                  <span
+                    class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs sm:text-sm"
+                    >Problem Solving</span
+                  >
+                  <span
+                    class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs sm:text-sm"
+                    >Communication</span
+                  >
+                  <span
+                    class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs sm:text-sm"
+                    >Team Leadership</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Info Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div
+              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-300"
+                >
+                  <i class="fas fa-code text-blue-600 text-lg sm:text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
+                    MERN Stack
+                  </h4>
+                  <p class="text-gray-600 text-xs sm:text-sm">
+                    MongoDB | Express | React | Node
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors duration-300"
+                >
+                  <i class="fas fa-globe text-green-600 text-lg sm:text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
+                    Expertise
+                  </h4>
+                  <p class="text-gray-600 text-xs sm:text-sm">
+                    GDS | NDC | Payment Gateways
+                  </p>
                 </div>
               </div>
             </div>
 
-            <!-- Quick Info Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div
-                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-300"
-                  >
-                    <i class="fas fa-code text-blue-600 text-xl"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-gray-900">MERN Stack</h4>
-                    <p class="text-gray-600">
-                      MongoDB | Express | React | Node
-                    </p>
-                  </div>
+            <div
+              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-300"
+                >
+                  <i
+                    class="fas fa-plane text-purple-600 text-lg sm:text-xl"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
+                    Specialization
+                  </h4>
+                  <p class="text-gray-600 text-xs sm:text-sm">
+                    Travel Technology & APIs
+                  </p>
                 </div>
               </div>
-              <div
-                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors duration-300"
-                  >
-                    <i class="fas fa-globe text-green-600 text-xl"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-gray-900">Expertise</h4>
-                    <p class="text-gray-600">GDS | NDC | Payment Gateways</p>
-                  </div>
-                </div>
-              </div>
+            </div>
 
-              <div
-                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-300"
-                  >
-                    <i class="fas fa-plane text-purple-600 text-xl"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-gray-900">Specialization</h4>
-                    <p class="text-gray-600">Travel Technology & APIs</p>
-                  </div>
+            <div
+              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors duration-300"
+                >
+                  <i
+                    class="fas fa-credit-card text-red-600 text-lg sm:text-xl"
+                  ></i>
                 </div>
-              </div>
-
-              <div
-                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors duration-300"
-                  >
-                    <i class="fas fa-credit-card text-red-600 text-xl"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-gray-900">Payment Systems</h4>
-                    <p class="text-gray-600">
-                      CyberSource | Gateway Integration
-                    </p>
-                  </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
+                    Payment Systems
+                  </h4>
+                  <p class="text-gray-600 text-xs sm:text-sm">
+                    CyberSource | Gateway Integration
+                  </p>
                 </div>
               </div>
             </div>
@@ -577,12 +622,14 @@
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20"
+        >
           <div
-            class="bg-white p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
           >
             <div
-              class="text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
+              class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
             >
               7+
             </div>
@@ -590,10 +637,10 @@
             <div class="text-sm text-gray-500 mt-1">Since 2018</div>
           </div>
           <div
-            class="bg-white p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
           >
             <div
-              class="text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
+              class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
             >
               50+
             </div>
@@ -601,10 +648,10 @@
             <div class="text-sm text-gray-500 mt-1">Web & Mobile Apps</div>
           </div>
           <div
-            class="bg-white p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
           >
             <div
-              class="text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
+              class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
             >
               100+
             </div>
@@ -616,55 +663,61 @@
     </section>
 
     <!-- Services Section -->
-    <section class="py-20 bg-white" id="services">
+    <section class="py-16 sm:py-20 bg-white" id="services">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          >
             My Services
           </h2>
           <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
             I offer comprehensive development and security services to bring
             your digital vision to life
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
           <!-- Service 1: Travel Technology Solutions -->
           <div
-            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             ></div>
             <div class="relative z-10">
               <div
-                class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
               >
-                <i class="fas fa-plane text-white text-2xl"></i>
+                <i class="fas fa-plane text-white text-xl sm:text-2xl"></i>
               </div>
               <h3
-                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300"
+                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300"
               >
                 Travel Technology Solutions
               </h3>
-              <p class="text-gray-600 leading-relaxed mb-6">
+              <p
+                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
+              >
                 Comprehensive travel technology development including GDS
                 integration, NDC implementation, and OTA platform development
                 with modern architecture and scalable solutions.
               </p>
               <div class="flex flex-wrap gap-2">
                 <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >GDS</span
                 >
                 <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >NDC</span
                 >
                 <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >OTA</span
                 >
               </div>
@@ -673,38 +726,42 @@
 
           <!-- Service 2: Payment Gateway Integration -->
           <div
-            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             ></div>
             <div class="relative z-10">
               <div
-                class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
               >
-                <i class="fas fa-credit-card text-white text-2xl"></i>
+                <i
+                  class="fas fa-credit-card text-white text-xl sm:text-2xl"
+                ></i>
               </div>
               <h3
-                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors duration-300"
+                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors duration-300"
               >
                 Payment Gateway Integration
               </h3>
-              <p class="text-gray-600 leading-relaxed mb-6">
+              <p
+                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
+              >
                 Secure payment processing solutions with CyberSource,
                 multi-currency support, fraud detection, and seamless checkout
                 experiences for travel and e-commerce platforms.
               </p>
               <div class="flex flex-wrap gap-2">
                 <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >CyberSource</span
                 >
                 <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Multi-Currency</span
                 >
                 <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Fraud Detection</span
                 >
               </div>
@@ -713,38 +770,40 @@
 
           <!-- Service 3: API Development -->
           <div
-            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             ></div>
             <div class="relative z-10">
               <div
-                class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
               >
-                <i class="fas fa-code text-white text-2xl"></i>
+                <i class="fas fa-code text-white text-xl sm:text-2xl"></i>
               </div>
               <h3
-                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300"
+                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300"
               >
                 API Design & Development
               </h3>
-              <p class="text-gray-600 leading-relaxed mb-6">
+              <p
+                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
+              >
                 Custom API development using XML SOAP and REST JSON
                 architectures, ensuring robust integration capabilities with
                 third-party systems and scalable microservices.
               </p>
               <div class="flex flex-wrap gap-2">
                 <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >REST API</span
                 >
                 <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >XML SOAP</span
                 >
                 <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Microservices</span
                 >
               </div>
@@ -753,38 +812,40 @@
 
           <!-- Service 4: GDS System Integration -->
           <div
-            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-orange-50 to-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             ></div>
             <div class="relative z-10">
               <div
-                class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
               >
-                <i class="fas fa-globe text-white text-2xl"></i>
+                <i class="fas fa-globe text-white text-xl sm:text-2xl"></i>
               </div>
               <h3
-                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300"
+                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300"
               >
                 GDS System Integration
               </h3>
-              <p class="text-gray-600 leading-relaxed mb-6">
+              <p
+                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
+              >
                 Expert integration with major GDS providers including Amadeus,
                 Sabre, Travelport, HitchHiker, and Verteil for comprehensive
                 travel inventory access and booking capabilities.
               </p>
               <div class="flex flex-wrap gap-2">
                 <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Amadeus</span
                 >
                 <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Sabre</span
                 >
                 <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Travelport</span
                 >
               </div>
@@ -793,38 +854,40 @@
 
           <!-- Service 5: Team Leadership -->
           <div
-            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             ></div>
             <div class="relative z-10">
               <div
-                class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
               >
-                <i class="fas fa-users text-white text-2xl"></i>
+                <i class="fas fa-users text-white text-xl sm:text-2xl"></i>
               </div>
               <h3
-                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300"
+                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300"
               >
                 Team Leadership & Management
               </h3>
-              <p class="text-gray-600 leading-relaxed mb-6">
+              <p
+                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
+              >
                 Strategic leadership in technology teams, project management,
                 and cross-functional collaboration to drive innovation and
                 deliver exceptional results in competitive environments.
               </p>
               <div class="flex flex-wrap gap-2">
                 <span
-                  class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Leadership</span
                 >
                 <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Team Management</span
                 >
                 <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Innovation</span
                 >
               </div>
@@ -833,23 +896,25 @@
 
           <!-- Service 6: Sales & Marketing -->
           <div
-            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-pink-50 to-rose-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             ></div>
             <div class="relative z-10">
               <div
-                class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
               >
-                <i class="fas fa-chart-line text-white text-2xl"></i>
+                <i class="fas fa-chart-line text-white text-xl sm:text-2xl"></i>
               </div>
               <h3
-                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-pink-600 transition-colors duration-300"
+                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-pink-600 transition-colors duration-300"
               >
                 Sales & Marketing Strategy
               </h3>
-              <p class="text-gray-600 leading-relaxed mb-6">
+              <p
+                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
+              >
                 Strategic sales and marketing solutions for travel technology
                 products, digital transformation initiatives, and business
                 growth acceleration with data-driven insights and competitive
@@ -857,15 +922,15 @@
               </p>
               <div class="flex flex-wrap gap-2">
                 <span
-                  class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Sales Strategy</span
                 >
                 <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Marketing</span
                 >
                 <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
                   >Growth Hacking</span
                 >
               </div>
@@ -876,33 +941,37 @@
     </section>
 
     <!-- Skills Section -->
-    <section class="py-20 bg-gray-50" id="skills">
+    <section class="py-16 sm:py-20 bg-gray-50" id="skills">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          >
             Technical Skills
           </h2>
           <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
             My expertise spans across travel technology, payment systems, and
             modern development frameworks
           </p>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <!-- Skills Content -->
           <div class="space-y-6">
             <div>
-              <h3 class="text-2xl font-bold text-blue-600 mb-4">
+              <h3 class="text-xl sm:text-2xl font-bold text-blue-600 mb-4">
                 Travel Technology Expertise
               </h3>
-              <p class="text-gray-600 leading-relaxed mb-6">
+              <p
+                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
+              >
                 With extensive experience in travel industry technology, I've
                 mastered various GDS systems, payment gateway integrations, and
                 API development. My expertise enables seamless integration of
                 complex travel booking systems with modern payment solutions.
               </p>
-              <p class="text-gray-600 leading-relaxed">
+              <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
                 I'm constantly updating my knowledge with the latest industry
                 standards and emerging technologies to deliver cutting-edge
                 solutions.
@@ -910,40 +979,50 @@
             </div>
 
             <!-- Tech Stack Icons -->
-            <div class="grid grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div
-                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
               >
                 <i
-                  class="fas fa-plane text-3xl text-blue-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                  class="fas fa-plane text-2xl sm:text-3xl text-blue-500 mb-2 group-hover:scale-110 transition-transform duration-300"
                 ></i>
-                <span class="text-sm text-gray-600 font-medium">Amadeus</span>
+                <span
+                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
+                  >Amadeus</span
+                >
               </div>
               <div
-                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
               >
                 <i
-                  class="fas fa-globe text-3xl text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                  class="fas fa-globe text-2xl sm:text-3xl text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300"
                 ></i>
-                <span class="text-sm text-gray-600 font-medium">Sabre</span>
+                <span
+                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
+                  >Sabre</span
+                >
               </div>
               <div
-                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
               >
                 <i
-                  class="fas fa-credit-card text-3xl text-purple-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                  class="fas fa-credit-card text-2xl sm:text-3xl text-purple-500 mb-2 group-hover:scale-110 transition-transform duration-300"
                 ></i>
-                <span class="text-sm text-gray-600 font-medium"
+                <span
+                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
                   >CyberSource</span
                 >
               </div>
               <div
-                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
               >
                 <i
-                  class="fas fa-code text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                  class="fas fa-code text-2xl sm:text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300"
                 ></i>
-                <span class="text-sm text-gray-600 font-medium">REST API</span>
+                <span
+                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
+                  >REST API</span
+                >
               </div>
             </div>
           </div>
@@ -953,16 +1032,18 @@
             <!-- GDS Systems -->
             <div class="skill-item">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold"
-                  >GDS Systems (Amadeus, Sabre)</span
+                <span class="text-gray-700 font-semibold text-sm sm:text-base"
+                  >GDS Systems (Amadeus, Sabre, Travelport)</span
                 >
-                <span class="text-blue-600 font-semibold">95%</span>
+                <span class="text-blue-600 font-semibold text-sm sm:text-base"
+                  >95%</span
+                >
               </div>
               <div
-                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
               >
                 <div
-                  class="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-1000 ease-out"
+                  class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
                   style="width: 95%"
                 ></div>
               </div>
@@ -971,16 +1052,18 @@
             <!-- Payment Gateway Integration -->
             <div class="skill-item">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold"
+                <span class="text-gray-700 font-semibold text-sm sm:text-base"
                   >Payment Gateway Integration</span
                 >
-                <span class="text-green-600 font-semibold">90%</span>
+                <span class="text-green-600 font-semibold text-sm sm:text-base"
+                  >90%</span
+                >
               </div>
               <div
-                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
               >
                 <div
-                  class="bg-gradient-to-r from-green-400 to-green-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  class="bg-gradient-to-r from-green-400 to-green-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
                   style="width: 90%"
                 ></div>
               </div>
@@ -989,16 +1072,18 @@
             <!-- API Development -->
             <div class="skill-item">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold"
+                <span class="text-gray-700 font-semibold text-sm sm:text-base"
                   >API Development (REST/SOAP)</span
                 >
-                <span class="text-purple-600 font-semibold">88%</span>
+                <span class="text-purple-600 font-semibold text-sm sm:text-base"
+                  >88%</span
+                >
               </div>
               <div
-                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
               >
                 <div
-                  class="bg-gradient-to-r from-purple-400 to-purple-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  class="bg-gradient-to-r from-purple-400 to-purple-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
                   style="width: 88%"
                 ></div>
               </div>
@@ -1007,16 +1092,18 @@
             <!-- Team Leadership -->
             <div class="skill-item">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold"
+                <span class="text-gray-700 font-semibold text-sm sm:text-base"
                   >Team Leadership & Management</span
                 >
-                <span class="text-orange-600 font-semibold">92%</span>
+                <span class="text-orange-600 font-semibold text-sm sm:text-base"
+                  >92%</span
+                >
               </div>
               <div
-                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
               >
                 <div
-                  class="bg-gradient-to-r from-orange-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  class="bg-gradient-to-r from-orange-400 to-orange-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
                   style="width: 92%"
                 ></div>
               </div>
@@ -1025,16 +1112,18 @@
             <!-- Travel Technology -->
             <div class="skill-item">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold"
+                <span class="text-gray-700 font-semibold text-sm sm:text-base"
                   >Travel Technology (NDC, LCC)</span
                 >
-                <span class="text-indigo-600 font-semibold">85%</span>
+                <span class="text-indigo-600 font-semibold text-sm sm:text-base"
+                  >85%</span
+                >
               </div>
               <div
-                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
               >
                 <div
-                  class="bg-gradient-to-r from-indigo-400 to-indigo-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  class="bg-gradient-to-r from-indigo-400 to-indigo-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
                   style="width: 85%"
                 ></div>
               </div>
@@ -1043,16 +1132,18 @@
             <!-- Sales & Marketing -->
             <div class="skill-item">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold"
+                <span class="text-gray-700 font-semibold text-sm sm:text-base"
                   >Sales & Marketing Strategy</span
                 >
-                <span class="text-pink-600 font-semibold">80%</span>
+                <span class="text-pink-600 font-semibold text-sm sm:text-base"
+                  >80%</span
+                >
               </div>
               <div
-                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
               >
                 <div
-                  class="bg-gradient-to-r from-pink-400 to-pink-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  class="bg-gradient-to-r from-pink-400 to-pink-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
                   style="width: 80%"
                 ></div>
               </div>
@@ -1419,25 +1510,29 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-20 bg-gray-900 text-white" id="contact">
+    <section class="py-16 sm:py-20 bg-gray-900 text-white" id="contact">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Get In Touch
+          </h2>
           <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
             Ready to discuss your next travel technology project? Let's connect
             and explore how we can work together.
           </p>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-12">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <!-- Contact Info -->
           <div class="space-y-8">
             <div>
-              <h3 class="text-2xl font-bold text-yellow-400 mb-6">
+              <h3 class="text-xl sm:text-2xl font-bold text-yellow-400 mb-6">
                 Let's Start a Conversation
               </h3>
-              <p class="text-gray-300 leading-relaxed text-lg mb-8">
+              <p
+                class="text-gray-300 leading-relaxed text-base sm:text-lg mb-8"
+              >
                 I'm always excited to discuss new opportunities, innovative
                 projects, and potential collaborations in the travel technology
                 space. Whether you need GDS integration, payment gateway
@@ -1449,238 +1544,712 @@
             <div class="space-y-6">
               <div class="flex items-center gap-4 group">
                 <div
-                  class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300"
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300"
                 >
-                  <i class="fas fa-envelope text-white text-xl"></i>
+                  <i class="fas fa-envelope text-white text-lg sm:text-xl"></i>
                 </div>
                 <div>
-                  <h4 class="font-semibold text-white mb-1">Email Address</h4>
-                  <p class="text-gray-300">arafat0951@gmail.com</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 group">
-                <div
-                  class="w-14 h-14 bg-green-600 rounded-xl flex items-center justify-center group-hover:bg-green-700 transition-colors duration-300"
-                >
-                  <i class="fas fa-map-marker-alt text-white text-xl"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">Location</h4>
-                  <p class="text-gray-300">Mirpur, Dhaka, Bangladesh</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 group">
-                <div
-                  class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center group-hover:bg-purple-700 transition-colors duration-300"
-                >
-                  <i class="fas fa-building text-white text-xl"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-white mb-1">
-                    Current Position
+                  <h4
+                    class="font-semibold text-white mb-1 text-sm sm:text-base"
+                  >
+                    Email Address
                   </h4>
-                  <p class="text-gray-300">CTO - Ticketemet.com</p>
+                  <p class="text-gray-300 text-sm sm:text-base">
+                    arafat0951@gmail.com
+                  </p>
                 </div>
               </div>
 
               <div class="flex items-center gap-4 group">
                 <div
-                  class="w-14 h-14 bg-orange-600 rounded-xl flex items-center justify-center group-hover:bg-orange-700 transition-colors duration-300"
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-xl flex items-center justify-center group-hover:bg-green-700 transition-colors duration-300"
                 >
-                  <i class="fas fa-clock text-white text-xl"></i>
+                  <i class="fas fa-phone-alt text-white text-lg sm:text-xl"></i>
                 </div>
                 <div>
-                  <h4 class="font-semibold text-white mb-1">Response Time</h4>
-                  <p class="text-gray-300">Within 24 hours</p>
+                  <h4
+                    class="font-semibold text-white mb-1 text-sm sm:text-base"
+                  >
+                    Phone Number
+                  </h4>
+                  <p class="text-gray-300 text-sm sm:text-base">
+                    +61 424 276 062 <br />
+                    +88 017 277 062 00
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 group">
+                <div
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-xl flex items-center justify-center group-hover:bg-green-700 transition-colors duration-300"
+                >
+                  <i
+                    class="fas fa-map-marker-alt text-white text-lg sm:text-xl"
+                  ></i>
+                </div>
+                <div>
+                  <h4
+                    class="font-semibold text-white mb-1 text-sm sm:text-base"
+                  >
+                    Location
+                  </h4>
+                  <p class="text-gray-300 text-sm sm:text-base">
+                    Darlinghurst, Sydney, Australia
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 group">
+                <div
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-600 rounded-xl flex items-center justify-center group-hover:bg-orange-700 transition-colors duration-300"
+                >
+                  <i class="fas fa-clock text-white text-lg sm:text-xl"></i>
+                </div>
+                <div>
+                  <h4
+                    class="font-semibold text-white mb-1 text-sm sm:text-base"
+                  >
+                    Response Time
+                  </h4>
+                  <p class="text-gray-300 text-sm sm:text-base">
+                    Within 24 hours
+                  </p>
                 </div>
               </div>
             </div>
 
             <!-- Social Links -->
             <div class="pt-8">
-              <h4 class="font-semibold text-white mb-4">Connect With Me</h4>
-              <div class="flex gap-4">
-                <a
-                  href="https://github.com/alfamas"
-                  target="_blank"
-                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
-                >
-                  <i class="fab fa-github text-xl"></i>
-                </a>
-                <a
-                  href="https://www.fb.com/masyasinarafat"
-                  target="_blank"
-                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
-                >
-                  <i class="fab fa-facebook text-xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
-                >
-                  <i class="fab fa-linkedin text-xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
-                >
-                  <i class="fab fa-twitter text-xl"></i>
-                </a>
+              <h4 class="font-semibold text-white mb-4 text-sm sm:text-base">
+                Connect With Me
+              </h4>
+              <div class="flex gap-4" id="contact-social-links">
+                <!-- Social links will be populated by JavaScript -->
               </div>
             </div>
           </div>
 
           <!-- Contact Form -->
           <div
-            class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700"
+            class="bg-gray-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-gray-700 shadow-2xl"
           >
-            <h3 class="text-2xl font-bold mb-6">Send Message</h3>
-            <div class="space-y-6" id="contact-form">
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-gray-300 font-medium mb-2"
-                    >Full Name</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
-                    placeholder="Your Name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label class="block text-gray-300 font-medium mb-2"
-                    >Email Address</label
-                  >
-                  <input
-                    type="email"
-                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
+            <!-- Security Status Indicator -->
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl sm:text-2xl font-bold text-white">
+                Send Message
+              </h3>
+              <div class="flex items-center gap-2 text-green-400 text-sm">
+                <i class="fas fa-shield-check animate-pulse"></i>
+                <span class="hidden sm:inline">Secure Form</span>
               </div>
+            </div>
 
-              <div>
-                <label class="block text-gray-300 font-medium mb-2"
-                  >Subject</label
-                >
+            <form
+              class="space-y-6"
+              id="contact-form"
+              autocomplete="off"
+              action="https://formspree.io/f/mjkoqlaz"
+              method="POST"
+              novalidate
+            >
+              <!-- Security Fields (Hidden) -->
+              <input
+                type="hidden"
+                name="_subject"
+                value="Portfolio Contact - Travel Tech Inquiry"
+              />
+              <input type="hidden" name="_template" value="basic" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="#contact" />
+
+              <!-- Honeypot (Spam Trap) -->
+              <div
+                style="position: absolute; left: -5000px; top: -5000px"
+                aria-hidden="true"
+              >
+                <label>Don't fill this out if you're human:</label>
                 <input
                   type="text"
-                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
-                  placeholder="Project Discussion"
-                  required
+                  name="_gotcha"
+                  tabindex="-1"
+                  autocomplete="off"
                 />
               </div>
 
+              <!-- Timestamp for rate limiting -->
+              <input type="hidden" name="_timestamp" id="form-timestamp" />
+
+              <!-- Name and Email Row -->
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="contact-name"
+                    class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
+                  >
+                    <i class="fas fa-user mr-2 text-blue-400"></i>Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    maxlength="100"
+                    pattern="^[a-zA-Z\s\-'\.]{2,100}$"
+                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
+                    placeholder="Your Name"
+                    required
+                    autocomplete="name"
+                  />
+                  <div
+                    class="text-red-400 text-sm mt-1 hidden"
+                    id="name-error"
+                  ></div>
+                </div>
+
+                <div>
+                  <label
+                    for="contact-email"
+                    class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
+                  >
+                    <i class="fas fa-envelope mr-2 text-blue-400"></i>Email
+                    Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    maxlength="255"
+                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
+                    placeholder="your@email.com"
+                    required
+                    autocomplete="email"
+                  />
+                  <div
+                    class="text-red-400 text-sm mt-1 hidden"
+                    id="email-error"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Subject -->
               <div>
-                <label class="block text-gray-300 font-medium mb-2"
-                  >Message</label
+                <label
+                  for="contact-subject"
+                  class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
                 >
+                  <i class="fas fa-tag mr-2 text-blue-400"></i>Subject *
+                </label>
+                <select
+                  id="contact-subject"
+                  name="subject"
+                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
+                  required
+                >
+                  <option value="">Select a topic</option>
+                  <option value="Project Inquiry">Project Inquiry</option>
+                  <option value="GDS Integration">GDS Integration</option>
+                  <option value="Payment Gateway">
+                    Payment Gateway Solutions
+                  </option>
+                  <option value="API Development">API Development</option>
+                  <option value="Consultation">Consultation Request</option>
+                  <option value="Collaboration">
+                    Collaboration Opportunity
+                  </option>
+                  <option value="Other">Other</option>
+                </select>
+                <div
+                  class="text-red-400 text-sm mt-1 hidden"
+                  id="subject-error"
+                ></div>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label
+                  for="contact-message"
+                  class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
+                >
+                  <i class="fas fa-comment mr-2 text-blue-400"></i>Message *
+                </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   rows="6"
-                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none"
+                  minlength="10"
+                  maxlength="2000"
+                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none text-sm sm:text-base"
                   placeholder="Tell me about your project requirements..."
                   required
                 ></textarea>
+                <div class="flex justify-between items-center mt-1">
+                  <div
+                    class="text-red-400 text-sm hidden"
+                    id="message-error"
+                  ></div>
+                  <div class="text-gray-400 text-sm" id="char-count">
+                    0/2000 characters
+                  </div>
+                </div>
               </div>
 
+              <!-- Privacy Consent -->
+              <div class="bg-gray-700/30 border border-gray-600 rounded-lg p-4">
+                <div class="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="privacy-consent"
+                    name="privacy_consent"
+                    required
+                    class="mt-1 w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+                  />
+                  <label
+                    for="privacy-consent"
+                    class="text-sm text-gray-300 flex-1 leading-relaxed"
+                  >
+                    I consent to having this website store my submitted
+                    information for responding to my inquiry. *
+                  </label>
+                </div>
+                <div
+                  class="text-red-400 text-sm mt-2 hidden"
+                  id="privacy-error"
+                ></div>
+              </div>
+
+              <!-- Submit Button -->
               <button
                 type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 group"
+                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 group text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                id="contact-submit-btn"
               >
                 <i
                   class="fas fa-paper-plane group-hover:translate-x-1 transition-transform duration-300"
                 ></i>
-                Send Message
+                <span id="submit-text">Send Secure Message</span>
               </button>
-            </div>
+
+              <!-- Status Messages -->
+              <div id="form-status" class="hidden"></div>
+            </form>
           </div>
         </div>
+
+        <script>
+          // Security Configuration
+          const SECURITY_CONFIG = {
+            maxSubmissions: 3,
+            timeWindow: 3600000, // 1 hour
+            minMessageLength: 10,
+            maxMessageLength: 2000,
+            rateLimit: true,
+          };
+
+          // Initialize security features when page loads
+          document.addEventListener("DOMContentLoaded", function () {
+            initializeSecurity();
+            setupFormValidation();
+            setupCharacterCount();
+            checkRateLimit();
+          });
+
+          function initializeSecurity() {
+            // Set form timestamp for rate limiting
+            document.getElementById("form-timestamp").value = Date.now();
+
+            // Add security event listeners
+            detectAutomatedBehavior();
+          }
+
+          function detectAutomatedBehavior() {
+            let humanInteractionDetected = false;
+
+            // Detect human-like interactions
+            ["mousemove", "keypress", "scroll", "click"].forEach((event) => {
+              document.addEventListener(
+                event,
+                function () {
+                  humanInteractionDetected = true;
+                },
+                { once: true }
+              );
+            });
+
+            // Check interaction before form submission
+            document
+              .getElementById("contact-form")
+              .addEventListener("submit", function (e) {
+                if (!humanInteractionDetected) {
+                  console.warn("Potential bot detected - no human interaction");
+                  e.preventDefault();
+                  return false;
+                }
+              });
+          }
+
+          function checkRateLimit() {
+            if (!SECURITY_CONFIG.rateLimit) return;
+
+            const submissions = JSON.parse(
+              localStorage.getItem("formSubmissions") || "[]"
+            );
+            const now = Date.now();
+            const recentSubmissions = submissions.filter(
+              (time) => now - time < SECURITY_CONFIG.timeWindow
+            );
+
+            if (recentSubmissions.length >= SECURITY_CONFIG.maxSubmissions) {
+              const nextSubmissionTime = new Date(
+                recentSubmissions[0] + SECURITY_CONFIG.timeWindow
+              );
+              showStatus(
+                `Rate limit exceeded. Next submission allowed at ${nextSubmissionTime.toLocaleTimeString()}`,
+                "error"
+              );
+              document.getElementById("contact-submit-btn").disabled = true;
+              return false;
+            }
+            return true;
+          }
+
+          function setupFormValidation() {
+            const form = document.getElementById("contact-form");
+            const inputs = form.querySelectorAll("input, textarea, select");
+
+            inputs.forEach((input) => {
+              input.addEventListener("blur", () => validateField(input));
+              input.addEventListener("input", () => clearFieldError(input));
+            });
+          }
+
+          function setupCharacterCount() {
+            const messageField = document.getElementById("contact-message");
+            const charCount = document.getElementById("char-count");
+
+            messageField.addEventListener("input", function () {
+              const length = this.value.length;
+              charCount.textContent = `${length}/${SECURITY_CONFIG.maxMessageLength} characters`;
+
+              // Color coding based on character count
+              if (length > SECURITY_CONFIG.maxMessageLength * 0.9) {
+                charCount.className = "text-yellow-400 text-sm";
+              } else if (length > SECURITY_CONFIG.maxMessageLength * 0.95) {
+                charCount.className = "text-red-400 text-sm";
+              } else {
+                charCount.className = "text-gray-400 text-sm";
+              }
+            });
+          }
+
+          function validateField(field) {
+            const value = field.value.trim();
+            let isValid = true;
+            let errorMessage = "";
+
+            switch (field.id) {
+              case "contact-name":
+                if (value.length < 2) {
+                  errorMessage = "Name must be at least 2 characters";
+                  isValid = false;
+                } else if (!/^[a-zA-Z\s\-'\.]{2,100}$/.test(value)) {
+                  errorMessage = "Name contains invalid characters";
+                  isValid = false;
+                }
+                break;
+
+              case "contact-email":
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                  errorMessage = "Please enter a valid email address";
+                  isValid = false;
+                }
+                break;
+
+              case "contact-message":
+                if (value.length < SECURITY_CONFIG.minMessageLength) {
+                  errorMessage = `Message must be at least ${SECURITY_CONFIG.minMessageLength} characters`;
+                  isValid = false;
+                } else if (value.length > SECURITY_CONFIG.maxMessageLength) {
+                  errorMessage = `Message cannot exceed ${SECURITY_CONFIG.maxMessageLength} characters`;
+                  isValid = false;
+                }
+                break;
+
+              case "contact-subject":
+                if (!value) {
+                  errorMessage = "Please select a subject";
+                  isValid = false;
+                }
+                break;
+            }
+
+            showFieldError(field, errorMessage);
+            return isValid;
+          }
+
+          function showFieldError(field, message) {
+            const errorElement = document.getElementById(
+              `${field.id.replace("contact-", "")}-error`
+            );
+            if (errorElement) {
+              if (message) {
+                errorElement.textContent = message;
+                errorElement.classList.remove("hidden");
+                field.classList.add("border-red-500", "focus:border-red-500");
+              } else {
+                errorElement.classList.add("hidden");
+                field.classList.remove(
+                  "border-red-500",
+                  "focus:border-red-500"
+                );
+              }
+            }
+          }
+
+          function clearFieldError(field) {
+            showFieldError(field, "");
+          }
+
+          // Handle form submission with security checks
+          document
+            .getElementById("contact-form")
+            .addEventListener("submit", function (e) {
+              e.preventDefault();
+
+              // Security Check 1: Honeypot
+              const honeypot = this.querySelector('[name="_gotcha"]');
+              if (honeypot && honeypot.value) {
+                console.warn("Honeypot triggered - likely spam");
+                return false;
+              }
+
+              // Security Check 2: Rate limiting
+              if (!checkRateLimit()) {
+                return false;
+              }
+
+              // Security Check 3: Form validation
+              const requiredFields = this.querySelectorAll("[required]");
+              let formIsValid = true;
+
+              requiredFields.forEach((field) => {
+                if (!validateField(field)) {
+                  formIsValid = false;
+                }
+              });
+
+              // Security Check 4: Privacy consent
+              const privacyConsent = document.getElementById("privacy-consent");
+              if (!privacyConsent.checked) {
+                showFieldError(privacyConsent, "Privacy consent is required");
+                formIsValid = false;
+              }
+
+              if (!formIsValid) {
+                showStatus(
+                  "Please correct the errors above before submitting",
+                  "error"
+                );
+                return false;
+              }
+
+              // Security Check 5: Timing analysis (prevent rapid submissions)
+              const formTimestamp = parseInt(
+                document.getElementById("form-timestamp").value
+              );
+              const timeDiff = Date.now() - formTimestamp;
+              if (timeDiff < 3000) {
+                // Less than 3 seconds
+                showStatus(
+                  "Please take a moment to review your message before submitting",
+                  "warning"
+                );
+                return false;
+              }
+
+              // All security checks passed - proceed with submission
+              submitForm(this);
+            });
+
+          function submitForm(form) {
+            const submitBtn = document.getElementById("contact-submit-btn");
+            const submitText = document.getElementById("submit-text");
+            const originalText = submitText.textContent;
+
+            // Update button state
+            submitBtn.disabled = true;
+            submitText.innerHTML =
+              '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+
+            // Create FormData object
+            const formData = new FormData(form);
+
+            // Submit to Formspree
+            fetch(form.action, {
+              method: "POST",
+              body: formData,
+              headers: {
+                Accept: "application/json",
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // Success
+                  showStatus(
+                    "✅ Message sent successfully! I'll get back to you within 24 hours.",
+                    "success"
+                  );
+                  form.reset();
+                  document.getElementById("char-count").textContent =
+                    "0/2000 characters";
+
+                  // Record submission for rate limiting
+                  if (SECURITY_CONFIG.rateLimit) {
+                    const submissions = JSON.parse(
+                      localStorage.getItem("formSubmissions") || "[]"
+                    );
+                    submissions.push(Date.now());
+                    // Keep only submissions within the time window
+                    const filtered = submissions.filter(
+                      (time) => Date.now() - time < SECURITY_CONFIG.timeWindow
+                    );
+                    localStorage.setItem(
+                      "formSubmissions",
+                      JSON.stringify(filtered)
+                    );
+                  }
+                } else {
+                  throw new Error("Network response was not ok");
+                }
+              })
+              .catch((error) => {
+                console.error("Form submission error:", error);
+                showStatus(
+                  "❌ Failed to send message. Please try again or contact me directly at arafat0951@gmail.com",
+                  "error"
+                );
+              })
+              .finally(() => {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.textContent = originalText;
+              });
+          }
+
+          function showStatus(message, type) {
+            const statusElement = document.getElementById("form-status");
+            statusElement.className = "p-4 rounded-lg border";
+
+            switch (type) {
+              case "success":
+                statusElement.className +=
+                  " bg-green-900/20 border-green-500 text-green-400";
+                break;
+              case "error":
+                statusElement.className +=
+                  " bg-red-900/20 border-red-500 text-red-400";
+                break;
+              case "warning":
+                statusElement.className +=
+                  " bg-yellow-900/20 border-yellow-500 text-yellow-400";
+                break;
+              default:
+                statusElement.className +=
+                  " bg-blue-900/20 border-blue-500 text-blue-400";
+            }
+
+            statusElement.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-${
+                      type === "success"
+                        ? "check-circle"
+                        : type === "error"
+                        ? "exclamation-triangle"
+                        : "info-circle"
+                    }"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+
+            statusElement.classList.remove("hidden");
+
+            // Auto-remove success messages after 5 seconds
+            if (type === "success") {
+              setTimeout(() => {
+                statusElement.classList.add("hidden");
+              }, 5000);
+            }
+
+            // Scroll to status message
+            statusElement.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+            });
+          }
+
+          // Additional security: Clear form data on page unload
+          window.addEventListener("beforeunload", function () {
+            const form = document.getElementById("contact-form");
+            if (form) form.reset();
+          });
+        </script>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-12">
+    <footer class="bg-black text-white py-8 sm:py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <!-- About Column -->
-          <div class="md:col-span-2">
-            <h3 class="text-2xl font-bold text-blue-400 mb-4">ALFAMAS</h3>
-            <p class="text-gray-300 leading-relaxed mb-6">
-              CTO and travel technology expert specializing in GDS integration,
-              payment gateway solutions, and innovative travel platforms.
-              Leading the future of travel technology with cutting-edge
-              solutions.
+          <div class="sm:col-span-2">
+            <h3 class="text-xl sm:text-2xl font-bold text-blue-400 mb-4">
+              ALFAMAS
+            </h3>
+            <p class="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">
+              Travel Technology Expert specializing in GDS integration, payment
+              gateway solutions, and innovative travel platforms. Leading the
+              future of travel technology with cutting-edge solutions.
             </p>
-            <div class="flex gap-4">
-              <a
-                href="https://github.com/alfamas"
-                target="_blank"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://www.fb.com/masyasinarafat"
-                target="_blank"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
-              >
-                <i class="fab fa-facebook"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
-              >
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
+            <div class="flex gap-4" id="footer-social-links">
+              <!-- Social links will be populated by JavaScript -->
             </div>
           </div>
 
           <!-- Quick Links -->
           <div>
-            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
             <ul class="space-y-2">
               <li>
                 <a
                   href="#home"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
                   >Home</a
                 >
               </li>
               <li>
                 <a
                   href="#about"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
                   >About</a
                 >
               </li>
               <li>
                 <a
                   href="#services"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
                   >Services</a
                 >
               </li>
               <li>
                 <a
                   href="#portfolio"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
                   >Portfolio</a
                 >
               </li>
               <li>
                 <a
                   href="#contact"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
                   >Contact</a
                 >
               </li>
@@ -1689,27 +2258,53 @@
 
           <!-- Services -->
           <div>
-            <h4 class="text-lg font-semibold mb-4">Services</h4>
+            <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
             <ul class="space-y-2">
-              <li><span class="text-gray-300">GDS Integration</span></li>
-              <li><span class="text-gray-300">Payment Gateways</span></li>
-              <li><span class="text-gray-300">API Development</span></li>
-              <li><span class="text-gray-300">Team Leadership</span></li>
-              <li><span class="text-gray-300">Travel Technology</span></li>
+              <li>
+                <span class="text-gray-300 text-sm sm:text-base"
+                  >GDS Integration</span
+                >
+              </li>
+              <li>
+                <span class="text-gray-300 text-sm sm:text-base"
+                  >Payment Gateways</span
+                >
+              </li>
+              <li>
+                <span class="text-gray-300 text-sm sm:text-base"
+                  >API Development</span
+                >
+              </li>
+              <li>
+                <span class="text-gray-300 text-sm sm:text-base"
+                  >Team Leadership</span
+                >
+              </li>
+              <li>
+                <span class="text-gray-300 text-sm sm:text-base"
+                  >Travel Technology</span
+                >
+              </li>
             </ul>
           </div>
         </div>
 
         <!-- Bottom Footer -->
         <div
-          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+          class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center"
         >
-          <p class="text-gray-400 text-sm">
-            © 2024 MAS Yasin Arafat. All rights reserved. | Designed with ❤️ by
+          <p
+            class="text-gray-400 text-xs sm:text-sm text-center sm:text-left mb-4 sm:mb-0"
+          >
+            © 2018 -
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved by MAS Yasin Arafat | Designed with ❤️ by
             ALFAMAS
           </p>
-          <div class="flex items-center gap-4 mt-4 md:mt-0">
-            <span class="text-gray-400 text-sm">Built with</span>
+          <div class="flex items-center gap-4">
+            <span class="text-gray-400 text-xs sm:text-sm">Built with</span>
             <div class="flex gap-2">
               <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs"
                 >Tailwind CSS</span
@@ -1727,26 +2322,115 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <div class="fixed bottom-8 right-8 z-50">
+    <div class="fixed bottom-6 sm:bottom-8 right-6 sm:right-8 z-50">
       <button
         onclick="scrollToTop()"
-        class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 flex items-center justify-center group opacity-0 invisible"
+        class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 flex items-center justify-center group opacity-0 invisible"
         id="scroll-top"
       >
         <i
-          class="fas fa-chevron-up text-xl group-hover:scale-110 transition-transform duration-300"
+          class="fas fa-chevron-up text-lg sm:text-xl group-hover:scale-110 transition-transform duration-300"
         ></i>
       </button>
     </div>
 
     <!-- JavaScript -->
     <script>
+      // Social Links Configuration
+      const socialLinks = [
+        {
+          name: "GitHub",
+          url: "https://github.com/alfamas",
+          icon: "fab fa-github",
+          color: "hover:bg-gray-700",
+        },
+        {
+          name: "Facebook",
+          url: "https://www.fb.com/masyasinarafat",
+          icon: "fab fa-facebook",
+          color: "hover:bg-blue-600",
+        },
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/masyasinarafat/",
+          icon: "fab fa-linkedin",
+          color: "hover:bg-blue-700",
+        },
+        {
+          name: "Instagram",
+          url: "https://www.instagram.com/masyasinarafat/",
+          icon: "fab fa-instagram",
+          color: "hover:bg-pink-500",
+        },
+      ];
+
+      // Function to generate social links HTML
+      function generateSocialLinks(type = "hero") {
+        let linkClass = "";
+
+        if (type === "hero") {
+          linkClass =
+            "w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group";
+        } else if (type === "contact") {
+          linkClass =
+            "w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110";
+        } else if (type === "footer") {
+          linkClass =
+            "w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300";
+        }
+
+        return socialLinks
+          .map(
+            (link) => `
+          <a
+            href="${link.url}"
+            target="_blank"
+            class="${linkClass}"
+            title="${link.name}"
+          >
+            <i class="${link.icon} text-xl ${
+              type === "hero"
+                ? "group-hover:scale-125 transition-transform duration-300"
+                : ""
+            }"></i>
+          </a>
+        `
+          )
+          .join("");
+      }
+
+      // Populate social links in different sections
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hero section social links
+        const heroSocialContainer =
+          document.getElementById("hero-social-links");
+        if (heroSocialContainer) {
+          heroSocialContainer.innerHTML = generateSocialLinks("hero");
+        }
+
+        // Contact section social links
+        const contactSocialContainer = document.getElementById(
+          "contact-social-links"
+        );
+        if (contactSocialContainer) {
+          contactSocialContainer.innerHTML = generateSocialLinks("contact");
+        }
+
+        // Footer section social links
+        const footerSocialContainer = document.getElementById(
+          "footer-social-links"
+        );
+        if (footerSocialContainer) {
+          footerSocialContainer.innerHTML = generateSocialLinks("footer");
+        }
+      });
+
       // Typing Animation
       const typingTexts = [
-        "CTO & Travel Tech Expert",
+        "Travel Tech Expert",
         "Payment Gateway Specialist",
         "GDS Integration Expert",
-        "API Development Leader",
+        "API Development Architect",
         "Team Management Professional",
       ];
       let textIndex = 0;
@@ -1785,7 +2469,19 @@
       // Mobile Menu Toggle
       function toggleMobileMenu() {
         const mobileMenu = document.getElementById("mobile-menu");
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+
         mobileMenu.classList.toggle("hidden");
+        hamburgerBtn.classList.toggle("hamburger-active");
+      }
+
+      // Close Mobile Menu
+      function closeMobileMenu() {
+        const mobileMenu = document.getElementById("mobile-menu");
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+
+        mobileMenu.classList.add("hidden");
+        hamburgerBtn.classList.remove("hamburger-active");
       }
 
       // Scroll to Top
@@ -1822,14 +2518,31 @@
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            target.scrollIntoView({
+            const navHeight = document.getElementById("navbar").offsetHeight;
+            const targetPosition = target.offsetTop - navHeight;
+
+            window.scrollTo({
+              top: targetPosition,
               behavior: "smooth",
-              block: "start",
             });
+
             // Close mobile menu if open
-            document.getElementById("mobile-menu").classList.add("hidden");
+            closeMobileMenu();
           }
         });
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (e) {
+        const mobileMenu = document.getElementById("mobile-menu");
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+
+        if (
+          !hamburgerBtn.contains(e.target) &&
+          !mobileMenu.contains(e.target)
+        ) {
+          closeMobileMenu();
+        }
       });
 
       // Contact form submission
@@ -1838,7 +2551,7 @@
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Show success message (you can integrate with your backend here)
+          // Show success message
           const button = this.querySelector('button[type="submit"]');
           const originalText = button.innerHTML;
 
@@ -1890,6 +2603,14 @@
 
       skillBars.forEach((bar) => {
         skillObserver.observe(bar);
+      });
+
+      // Handle window resize
+      window.addEventListener("resize", function () {
+        // Close mobile menu on resize to larger screen
+        if (window.innerWidth >= 768) {
+          closeMobileMenu();
+        }
       });
     </script>
   </body>
