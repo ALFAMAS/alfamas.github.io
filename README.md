@@ -12,7 +12,7 @@
 
 ## 🚀 Live Demo
 
-Visit the live website: **[alfamas.github.io/portfolio](https://alfamas.github.io)**
+Visit the live website: **[alfamas.dev](https://alfamas.dev)**
 
 ## 📋 Table of Contents
 
@@ -138,7 +138,7 @@ Then open `http://localhost:8000` in your browser.
 ## 📁 Project Structure
 
 ```
-portfolio/
+alfamas.github.io/
 │
 ├── index.html              # Main HTML file
 ├── images/                 # Image assets
@@ -324,7 +324,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **MAS Yasin Arafat**
 
-- 🌐 **Website**: [alfamas.github.io/portfolio](https://alfamas.github.io)
+- 🌐 **Website**: [alfamas.dev](https://alfamas.dev)
 - 📧 **Email**: arafat0951@gmail.com
 - 💼 **LinkedIn**: [linkedin.com/in/masyasinarafat](https://www.linkedin.com/in/masyasinarafat/)
 - 🐙 **GitHub**: [github.com/alfamas](https://github.com/alfamas)
