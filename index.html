@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAS Yasin Arafat - Full Stack Developer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .typing-cursor::after {
+        content: "|";
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+
+      .nav-blur {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.95);
+      }
+    </style>
+  </head>
+  <body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full nav-blur z-50 border-b border-gray-200 transition-all duration-300"
+      id="navbar"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a
+            href="#"
+            class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300"
+          >
+            ALFAMAS
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
+            >
+              Home
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="#about"
+              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
+            >
+              About
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="#services"
+              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
+            >
+              Services
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="#skills"
+              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
+            >
+              Skills
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="#portfolio"
+              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
+            >
+              Portfolio
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="#contact"
+              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
+            >
+              Contact
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            class="md:hidden flex flex-col space-y-1 group"
+            onclick="toggleMobileMenu()"
+          >
+            <span
+              class="w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
+            ></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200"
+        id="mobile-menu"
+      >
+        <div class="px-4 py-3 space-y-3">
+          <a
+            href="#home"
+            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            >Services</a
+          >
+          <a
+            href="#skills"
+            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            >Skills</a
+          >
+          <a
+            href="#portfolio"
+            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            >Portfolio</a
+          >
+          <a
+            href="#contact"
+            class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen gradient-bg flex items-center relative overflow-hidden"
+      id="home"
+    >
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute inset-0"
+          style="
+            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><defs><pattern id=&quot;grid&quot; width=&quot;10&quot; height=&quot;10&quot; patternUnits=&quot;userSpaceOnUse&quot;><path d=&quot;M 10 0 L 0 0 0 10&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;0.5&quot;/></pattern></defs><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(%23grid)&quot;/></svg>');
+          "
+        ></div>
+      </div>
+
+      <!-- Floating Elements -->
+      <div
+        class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"
+      ></div>
+      <div
+        class="absolute top-40 right-20 w-16 h-16 bg-yellow-400/20 rounded-full animate-float"
+        style="animation-delay: 1s"
+      ></div>
+      <div
+        class="absolute bottom-20 left-20 w-24 h-24 bg-blue-400/10 rounded-full animate-float"
+        style="animation-delay: 2s"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Hero Content -->
+          <div class="text-white space-y-6 fade-in-up">
+            <div class="space-y-4">
+              <p class="text-lg text-white/80 font-medium">
+                👋 Hello, my name is
+              </p>
+              <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                <span class="text-yellow-400">MAS Yasin Arafat</span>
+                <div class="inline-flex items-center ml-2">
+                  <i
+                    class="fas fa-check-circle text-blue-400 text-2xl"
+                    title="Verified Professional"
+                  ></i>
+                </div>
+              </h1>
+              <div class="text-xl md:text-2xl text-white/90 mb-2">
+                And I'm a
+                <span
+                  class="text-yellow-400 font-semibold typing-cursor"
+                  id="typing-text"
+                  >Developer & Travel Tech Expert</span
+                >
+              </div>
+              <div class="text-lg text-white/80 font-medium mb-4">
+                Travel Tech | Payment Gateway Integration Specialist
+              </div>
+              <p class="text-lg text-white/80 max-w-2xl leading-relaxed">
+                Enthusiastic travel technology expert specializing in GDS, NDC,
+                payment gateway integrations, and API development. Leading
+                innovative solutions in the travel industry with expertise in
+                Amadeus, Sabre, Travelport, and modern payment systems.
+              </p>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              <a
+                href="#portfolio"
+                class="glass-effect border border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
+              >
+                <i
+                  class="fas fa-eye group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                View My Work
+              </a>
+              <a
+                href="#contact"
+                class="bg-transparent border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
+              >
+                <i
+                  class="fas fa-envelope group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                Contact Me
+              </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex gap-4 pt-6">
+              <a
+                href="https://github.com/alfamas"
+                target="_blank"
+                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
+              >
+                <i
+                  class="fab fa-github text-xl group-hover:scale-125 transition-transform duration-300"
+                ></i>
+              </a>
+              <a
+                href="https://www.fb.com/masyasinarafat"
+                target="_blank"
+                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
+              >
+                <i
+                  class="fab fa-facebook text-xl group-hover:scale-125 transition-transform duration-300"
+                ></i>
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
+              >
+                <i
+                  class="fab fa-linkedin text-xl group-hover:scale-125 transition-transform duration-300"
+                ></i>
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group"
+              >
+                <i
+                  class="fab fa-twitter text-xl group-hover:scale-125 transition-transform duration-300"
+                ></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Image -->
+          <div
+            class="flex justify-center lg:justify-end fade-in-up"
+            style="animation-delay: 0.3s"
+          >
+            <div class="relative">
+              <div
+                class="w-80 h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-700 hover:scale-105 group"
+              >
+                <img
+                  src="images/pp1.jpg"
+                  alt="MAS Yasin Arafat"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 group-hover:opacity-0 transition-opacity duration-300"
+                ></div>
+              </div>
+              <!-- Floating Badge -->
+              <div
+                class="absolute -bottom-6 -right-6 bg-white text-gray-800 px-4 py-2 rounded-full shadow-lg font-semibold text-sm animate-bounce"
+              >
+                💻 Available for work
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div
+          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce"
+        >
+          <div class="flex flex-col items-center gap-2">
+            <span class="text-sm">Scroll down</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gray-50" id="about">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            About Me
+          </h2>
+          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Get to know more about my journey, skills, and passion for
+            technology
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- About Image -->
+          <div class="relative group">
+            <div class="w-full max-w-lg mx-auto">
+              <div class="relative overflow-hidden rounded-2xl">
+                <img
+                  src="/images/pp2.jpg"
+                  alt="About Me"
+                  class="w-full transform group-hover:scale-110 transition-transform duration-700"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-purple-600/30 group-hover:opacity-0 transition-opacity duration-300"
+                ></div>
+              </div>
+              <!-- Decorative Elements -->
+              <div
+                class="absolute -top-4 -right-4 w-20 h-20 bg-yellow-400 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
+              ></div>
+              <div
+                class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-600 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
+              ></div>
+            </div>
+          </div>
+
+          <!-- About Content -->
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-3xl font-bold text-blue-600 mb-6">
+                CTO & Travel Technology Expert
+              </h3>
+              <div class="space-y-4 text-gray-600 leading-relaxed text-lg">
+                <p>
+                  I am an enthusiastic, self-motivated, and hardworking
+                  individual with a relentless drive for excellence. As CTO of
+                  Ticketemet.com, I thrive in competitive environments,
+                  demonstrating strong leadership, unwavering confidence in
+                  decision-making, and the ability to perform exceptionally well
+                  under pressure.
+                </p>
+                <p>
+                  My expertise spans across
+                  <span class="text-blue-600 font-semibold"
+                    >GDS systems (Amadeus, Sabre, Travelport)</span
+                  >, NDC, LCC, payment gateway integrations (CyberSource), and
+                  comprehensive API development using XML SOAP and REST JSON
+                  architectures. I'm an OTA expert specializing in travel
+                  technology solutions.
+                </p>
+                <p>
+                  With a creative and industrious mindset, I am constantly
+                  exploring new ideas, embracing challenges, and transforming
+                  insights into impactful solutions. My passion for continuous
+                  learning and innovation fuels my ability to inspire others,
+                  foster collaboration, and drive meaningful change in the
+                  travel industry.
+                </p>
+              </div>
+
+              <!-- Education & Skills -->
+              <div
+                class="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100"
+              >
+                <h4 class="text-lg font-bold text-gray-900 mb-4">
+                  Education & Top Skills
+                </h4>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h5 class="font-semibold text-blue-600 mb-2">
+                      🎓 Education
+                    </h5>
+                    <p class="text-gray-700">
+                      Bachelor of Business Information Systems
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Torrens University Australia
+                    </p>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-blue-600 mb-2">
+                      🚀 Top Skills
+                    </h5>
+                    <div class="flex flex-wrap gap-2">
+                      <span
+                        class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm"
+                        >Sales & Marketing</span
+                      >
+                      <span
+                        class="bg-green-100 text-green-700 px-2 py-1 rounded text-sm"
+                        >Team Management</span
+                      >
+                      <span
+                        class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-sm"
+                        >Problem Solving</span
+                      >
+                      <span
+                        class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-sm"
+                        >Communication</span
+                      >
+                      <span
+                        class="bg-red-100 text-red-700 px-2 py-1 rounded text-sm"
+                        >Team Leadership</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div
+                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-300"
+                  >
+                    <i class="fas fa-code text-blue-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">MERN Stack</h4>
+                    <p class="text-gray-600">
+                      MongoDB | Express | React | Node
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors duration-300"
+                  >
+                    <i class="fas fa-globe text-green-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">Expertise</h4>
+                    <p class="text-gray-600">GDS | NDC | Payment Gateways</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-300"
+                  >
+                    <i class="fas fa-plane text-purple-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">Specialization</h4>
+                    <p class="text-gray-600">Travel Technology & APIs</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors duration-300"
+                  >
+                    <i class="fas fa-credit-card text-red-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">Payment Systems</h4>
+                    <p class="text-gray-600">
+                      CyberSource | Gateway Integration
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
+          >
+            <div
+              class="text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
+            >
+              7+
+            </div>
+            <div class="text-gray-600 font-medium">Years of Experience</div>
+            <div class="text-sm text-gray-500 mt-1">Since 2018</div>
+          </div>
+          <div
+            class="bg-white p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
+          >
+            <div
+              class="text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
+            >
+              50+
+            </div>
+            <div class="text-gray-600 font-medium">Projects Completed</div>
+            <div class="text-sm text-gray-500 mt-1">Web & Mobile Apps</div>
+          </div>
+          <div
+            class="bg-white p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
+          >
+            <div
+              class="text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
+            >
+              100+
+            </div>
+            <div class="text-gray-600 font-medium">Happy Clients</div>
+            <div class="text-sm text-gray-500 mt-1">Worldwide</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white" id="services">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            My Services
+          </h2>
+          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            I offer comprehensive development and security services to bring
+            your digital vision to life
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service 1: Travel Technology Solutions -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+              >
+                <i class="fas fa-plane text-white text-2xl"></i>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300"
+              >
+                Travel Technology Solutions
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                Comprehensive travel technology development including GDS
+                integration, NDC implementation, and OTA platform development
+                with modern architecture and scalable solutions.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >GDS</span
+                >
+                <span
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >NDC</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >OTA</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2: Payment Gateway Integration -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+              >
+                <i class="fas fa-credit-card text-white text-2xl"></i>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors duration-300"
+              >
+                Payment Gateway Integration
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                Secure payment processing solutions with CyberSource,
+                multi-currency support, fraud detection, and seamless checkout
+                experiences for travel and e-commerce platforms.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >CyberSource</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Multi-Currency</span
+                >
+                <span
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Fraud Detection</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3: API Development -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+              >
+                <i class="fas fa-code text-white text-2xl"></i>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300"
+              >
+                API Design & Development
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                Custom API development using XML SOAP and REST JSON
+                architectures, ensuring robust integration capabilities with
+                third-party systems and scalable microservices.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >REST API</span
+                >
+                <span
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >XML SOAP</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Microservices</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 4: GDS System Integration -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-orange-50 to-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+              >
+                <i class="fas fa-globe text-white text-2xl"></i>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300"
+              >
+                GDS System Integration
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                Expert integration with major GDS providers including Amadeus,
+                Sabre, Travelport, HitchHiker, and Verteil for comprehensive
+                travel inventory access and booking capabilities.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Amadeus</span
+                >
+                <span
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Sabre</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Travelport</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 5: Team Leadership -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+              >
+                <i class="fas fa-users text-white text-2xl"></i>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300"
+              >
+                Team Leadership & Management
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                Strategic leadership in technology teams, project management,
+                and cross-functional collaboration to drive innovation and
+                deliver exceptional results in competitive environments.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Leadership</span
+                >
+                <span
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Team Management</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Innovation</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 6: Sales & Marketing -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-pink-50 to-rose-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+              >
+                <i class="fas fa-chart-line text-white text-2xl"></i>
+              </div>
+              <h3
+                class="text-xl font-bold text-gray-900 mb-4 group-hover:text-pink-600 transition-colors duration-300"
+              >
+                Sales & Marketing Strategy
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                Strategic sales and marketing solutions for travel technology
+                products, digital transformation initiatives, and business
+                growth acceleration with data-driven insights and competitive
+                market analysis.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Sales Strategy</span
+                >
+                <span
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Marketing</span
+                >
+                <span
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Growth Hacking</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-gray-50" id="skills">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Technical Skills
+          </h2>
+          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            My expertise spans across travel technology, payment systems, and
+            modern development frameworks
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Skills Content -->
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-2xl font-bold text-blue-600 mb-4">
+                Travel Technology Expertise
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                With extensive experience in travel industry technology, I've
+                mastered various GDS systems, payment gateway integrations, and
+                API development. My expertise enables seamless integration of
+                complex travel booking systems with modern payment solutions.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                I'm constantly updating my knowledge with the latest industry
+                standards and emerging technologies to deliver cutting-edge
+                solutions.
+              </p>
+            </div>
+
+            <!-- Tech Stack Icons -->
+            <div class="grid grid-cols-4 gap-4">
+              <div
+                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+              >
+                <i
+                  class="fas fa-plane text-3xl text-blue-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <span class="text-sm text-gray-600 font-medium">Amadeus</span>
+              </div>
+              <div
+                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+              >
+                <i
+                  class="fas fa-globe text-3xl text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <span class="text-sm text-gray-600 font-medium">Sabre</span>
+              </div>
+              <div
+                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+              >
+                <i
+                  class="fas fa-credit-card text-3xl text-purple-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <span class="text-sm text-gray-600 font-medium"
+                  >CyberSource</span
+                >
+              </div>
+              <div
+                class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
+              >
+                <i
+                  class="fas fa-code text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300"
+                ></i>
+                <span class="text-sm text-gray-600 font-medium">REST API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Bars -->
+          <div class="space-y-6">
+            <!-- GDS Systems -->
+            <div class="skill-item">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-700 font-semibold"
+                  >GDS Systems (Amadeus, Sabre)</span
+                >
+                <span class="text-blue-600 font-semibold">95%</span>
+              </div>
+              <div
+                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+              >
+                <div
+                  class="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-1000 ease-out"
+                  style="width: 95%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Payment Gateway Integration -->
+            <div class="skill-item">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-700 font-semibold"
+                  >Payment Gateway Integration</span
+                >
+                <span class="text-green-600 font-semibold">90%</span>
+              </div>
+              <div
+                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+              >
+                <div
+                  class="bg-gradient-to-r from-green-400 to-green-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  style="width: 90%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- API Development -->
+            <div class="skill-item">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-700 font-semibold"
+                  >API Development (REST/SOAP)</span
+                >
+                <span class="text-purple-600 font-semibold">88%</span>
+              </div>
+              <div
+                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+              >
+                <div
+                  class="bg-gradient-to-r from-purple-400 to-purple-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  style="width: 88%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Team Leadership -->
+            <div class="skill-item">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-700 font-semibold"
+                  >Team Leadership & Management</span
+                >
+                <span class="text-orange-600 font-semibold">92%</span>
+              </div>
+              <div
+                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+              >
+                <div
+                  class="bg-gradient-to-r from-orange-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  style="width: 92%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Travel Technology -->
+            <div class="skill-item">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-700 font-semibold"
+                  >Travel Technology (NDC, LCC)</span
+                >
+                <span class="text-indigo-600 font-semibold">85%</span>
+              </div>
+              <div
+                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+              >
+                <div
+                  class="bg-gradient-to-r from-indigo-400 to-indigo-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  style="width: 85%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Sales & Marketing -->
+            <div class="skill-item">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-700 font-semibold"
+                  >Sales & Marketing Strategy</span
+                >
+                <span class="text-pink-600 font-semibold">80%</span>
+              </div>
+              <div
+                class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden"
+              >
+                <div
+                  class="bg-gradient-to-r from-pink-400 to-pink-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                  style="width: 80%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-20 bg-white" id="portfolio">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            My Portfolio
+          </h2>
+          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Showcasing innovative travel technology solutions and successful
+            project implementations
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1: Ticketemet.com -->
+          <div
+            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-blue-500 to-blue-700 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i
+                  class="fas fa-plane text-white text-4xl group-hover:scale-110 transition-transform duration-300"
+                ></i>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >Live Project</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300"
+              >
+                Ticketemet.com Platform
+              </h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Comprehensive travel booking platform with GDS integration,
+                multi-payment gateway support, and advanced booking management
+                system.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >GDS Integration</span
+                >
+                <span
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Payment Gateway</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Booking Engine</span
+                >
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">CTO & Lead Developer</span>
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >
+                  View Details <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Payment Gateway Solution -->
+          <div
+            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-green-500 to-emerald-700 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i
+                  class="fas fa-credit-card text-white text-4xl group-hover:scale-110 transition-transform duration-300"
+                ></i>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >Enterprise</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300"
+              >
+                CyberSource Integration Suite
+              </h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Advanced payment processing solution with fraud detection,
+                multi-currency support, and seamless checkout experience for
+                travel industry.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >CyberSource</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Multi-Currency</span
+                >
+                <span
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Fraud Detection</span
+                >
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">Payment Specialist</span>
+                <a
+                  href="#"
+                  class="text-green-600 hover:text-green-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >
+                  View Details <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: API Integration Platform -->
+          <div
+            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-purple-500 to-indigo-700 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i
+                  class="fas fa-code text-white text-4xl group-hover:scale-110 transition-transform duration-300"
+                ></i>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >API Solution</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300"
+              >
+                Multi-GDS API Gateway
+              </h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Unified API gateway connecting multiple GDS providers (Amadeus,
+                Sabre, Travelport) with standardized REST/SOAP interfaces.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >REST API</span
+                >
+                <span
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >XML SOAP</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Microservices</span
+                >
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">API Architect</span>
+                <a
+                  href="#"
+                  class="text-purple-600 hover:text-purple-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >
+                  View Details <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: NDC Implementation -->
+          <div
+            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i
+                  class="fas fa-globe text-white text-4xl group-hover:scale-110 transition-transform duration-300"
+                ></i>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >Innovation</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-300"
+              >
+                NDC & LCC Integration
+              </h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Next-generation airline distribution platform implementing IATA
+                NDC standards with low-cost carrier direct connections.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >NDC</span
+                >
+                <span
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >LCC</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >IATA Standards</span
+                >
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">Technology Lead</span>
+                <a
+                  href="#"
+                  class="text-orange-600 hover:text-orange-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >
+                  View Details <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Team Management Dashboard -->
+          <div
+            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-indigo-500 to-blue-700 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i
+                  class="fas fa-users text-white text-4xl group-hover:scale-110 transition-transform duration-300"
+                ></i>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >Management</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-300"
+              >
+                Team Performance Analytics
+              </h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Comprehensive team management and performance tracking dashboard
+                with real-time analytics and productivity insights.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Analytics</span
+                >
+                <span
+                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Team Tracking</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Performance</span
+                >
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">Project Manager</span>
+                <a
+                  href="#"
+                  class="text-indigo-600 hover:text-indigo-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >
+                  View Details <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Marketing Automation -->
+          <div
+            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 relative overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i
+                  class="fas fa-chart-line text-white text-4xl group-hover:scale-110 transition-transform duration-300"
+                ></i>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >Marketing</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors duration-300"
+              >
+                Travel Marketing Automation
+              </h3>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                Intelligent marketing automation platform for travel agencies
+                with personalized campaigns and conversion optimization.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Automation</span
+                >
+                <span
+                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Personalization</span
+                >
+                <span
+                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
+                  >Conversion</span
+                >
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">Marketing Lead</span>
+                <a
+                  href="#"
+                  class="text-pink-600 hover:text-pink-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
+                >
+                  View Details <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-gray-900 text-white" id="contact">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-4"></div>
+          <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+            Ready to discuss your next travel technology project? Let's connect
+            and explore how we can work together.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Contact Info -->
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-2xl font-bold text-yellow-400 mb-6">
+                Let's Start a Conversation
+              </h3>
+              <p class="text-gray-300 leading-relaxed text-lg mb-8">
+                I'm always excited to discuss new opportunities, innovative
+                projects, and potential collaborations in the travel technology
+                space. Whether you need GDS integration, payment gateway
+                solutions, or strategic technology leadership, I'm here to help.
+              </p>
+            </div>
+
+            <!-- Contact Items -->
+            <div class="space-y-6">
+              <div class="flex items-center gap-4 group">
+                <div
+                  class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300"
+                >
+                  <i class="fas fa-envelope text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Email Address</h4>
+                  <p class="text-gray-300">arafat0951@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 group">
+                <div
+                  class="w-14 h-14 bg-green-600 rounded-xl flex items-center justify-center group-hover:bg-green-700 transition-colors duration-300"
+                >
+                  <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Location</h4>
+                  <p class="text-gray-300">Mirpur, Dhaka, Bangladesh</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 group">
+                <div
+                  class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center group-hover:bg-purple-700 transition-colors duration-300"
+                >
+                  <i class="fas fa-building text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">
+                    Current Position
+                  </h4>
+                  <p class="text-gray-300">CTO - Ticketemet.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 group">
+                <div
+                  class="w-14 h-14 bg-orange-600 rounded-xl flex items-center justify-center group-hover:bg-orange-700 transition-colors duration-300"
+                >
+                  <i class="fas fa-clock text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1">Response Time</h4>
+                  <p class="text-gray-300">Within 24 hours</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="pt-8">
+              <h4 class="font-semibold text-white mb-4">Connect With Me</h4>
+              <div class="flex gap-4">
+                <a
+                  href="https://github.com/alfamas"
+                  target="_blank"
+                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                >
+                  <i class="fab fa-github text-xl"></i>
+                </a>
+                <a
+                  href="https://www.fb.com/masyasinarafat"
+                  target="_blank"
+                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                >
+                  <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                >
+                  <i class="fab fa-linkedin text-xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                >
+                  <i class="fab fa-twitter text-xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div
+            class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700"
+          >
+            <h3 class="text-2xl font-bold mb-6">Send Message</h3>
+            <div class="space-y-6" id="contact-form">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-gray-300 font-medium mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-300 font-medium mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-gray-300 font-medium mb-2"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                  placeholder="Project Discussion"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block text-gray-300 font-medium mb-2"
+                  >Message</label
+                >
+                <textarea
+                  rows="6"
+                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none"
+                  placeholder="Tell me about your project requirements..."
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 group"
+              >
+                <i
+                  class="fas fa-paper-plane group-hover:translate-x-1 transition-transform duration-300"
+                ></i>
+                Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <!-- About Column -->
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold text-blue-400 mb-4">ALFAMAS</h3>
+            <p class="text-gray-300 leading-relaxed mb-6">
+              CTO and travel technology expert specializing in GDS integration,
+              payment gateway solutions, and innovative travel platforms.
+              Leading the future of travel technology with cutting-edge
+              solutions.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="https://github.com/alfamas"
+                target="_blank"
+                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.fb.com/masyasinarafat"
+                target="_blank"
+                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Services</h4>
+            <ul class="space-y-2">
+              <li><span class="text-gray-300">GDS Integration</span></li>
+              <li><span class="text-gray-300">Payment Gateways</span></li>
+              <li><span class="text-gray-300">API Development</span></li>
+              <li><span class="text-gray-300">Team Leadership</span></li>
+              <li><span class="text-gray-300">Travel Technology</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div
+          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2024 MAS Yasin Arafat. All rights reserved. | Designed with ❤️ by
+            ALFAMAS
+          </p>
+          <div class="flex items-center gap-4 mt-4 md:mt-0">
+            <span class="text-gray-400 text-sm">Built with</span>
+            <div class="flex gap-2">
+              <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs"
+                >Tailwind CSS</span
+              >
+              <span class="bg-yellow-600 text-white px-2 py-1 rounded text-xs"
+                >JavaScript</span
+              >
+              <span class="bg-orange-600 text-white px-2 py-1 rounded text-xs"
+                >HTML5</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+      <button
+        onclick="scrollToTop()"
+        class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 flex items-center justify-center group opacity-0 invisible"
+        id="scroll-top"
+      >
+        <i
+          class="fas fa-chevron-up text-xl group-hover:scale-110 transition-transform duration-300"
+        ></i>
+      </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Typing Animation
+      const typingTexts = [
+        "CTO & Travel Tech Expert",
+        "Payment Gateway Specialist",
+        "GDS Integration Expert",
+        "API Development Leader",
+        "Team Management Professional",
+      ];
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typingElement = document.getElementById("typing-text");
+
+      function typeWriter() {
+        const currentText = typingTexts[textIndex];
+
+        if (isDeleting) {
+          typingElement.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typingElement.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentText.length) {
+          typeSpeed = 2000;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % typingTexts.length;
+          typeSpeed = 500;
+        }
+
+        setTimeout(typeWriter, typeSpeed);
+      }
+
+      // Start typing animation
+      typeWriter();
+
+      // Mobile Menu Toggle
+      function toggleMobileMenu() {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("hidden");
+      }
+
+      // Scroll to Top
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      // Navbar scroll effect and scroll to top button
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        const scrollTop = document.getElementById("scroll-top");
+
+        if (window.scrollY > 50) {
+          navbar.classList.add("shadow-lg");
+        } else {
+          navbar.classList.remove("shadow-lg");
+        }
+
+        if (window.scrollY > 300) {
+          scrollTop.classList.remove("opacity-0", "invisible");
+          scrollTop.classList.add("opacity-100", "visible");
+        } else {
+          scrollTop.classList.add("opacity-0", "invisible");
+          scrollTop.classList.remove("opacity-100", "visible");
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Close mobile menu if open
+            document.getElementById("mobile-menu").classList.add("hidden");
+          }
+        });
+      });
+
+      // Contact form submission
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show success message (you can integrate with your backend here)
+          const button = this.querySelector('button[type="submit"]');
+          const originalText = button.innerHTML;
+
+          button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+          button.classList.add("bg-green-600", "hover:bg-green-700");
+          button.classList.remove("bg-blue-600", "hover:bg-blue-700");
+
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove("bg-green-600", "hover:bg-green-700");
+            button.classList.add("bg-blue-600", "hover:bg-blue-700");
+            this.reset();
+          }, 3000);
+        });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in-up");
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Animate skill bars when in view
+      const skillBars = document.querySelectorAll(".skill-progress");
+      const skillObserver = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const bar = entry.target;
+            const width = bar.style.width;
+            bar.style.width = "0%";
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 200);
+          }
+        });
+      }, observerOptions);
+
+      skillBars.forEach((bar) => {
+        skillObserver.observe(bar);
+      });
+    </script>
+  </body>
+</html>
