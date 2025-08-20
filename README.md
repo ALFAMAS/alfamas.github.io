@@ -1,10 +1,10 @@
 # 🌟 MAS Yasin Arafat - Portfolio Website
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=github-pages)](https://alfamas.github.io/portfolio)
-[![GitHub Stars](https://img.shields.io/github/stars/alfamas/portfolio?style=for-the-badge)](https://github.com/alfamas/portfolio/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/alfamas/portfolio?style=for-the-badge)](https://github.com/alfamas/portfolio/network)
-[![GitHub Issues](https://img.shields.io/github/issues/alfamas/portfolio?style=for-the-badge)](https://github.com/alfamas/portfolio/issues)
-[![License](https://img.shields.io/github/license/alfamas/portfolio?style=for-the-badge)](https://github.com/alfamas/portfolio/blob/main/LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=github-pages)](https://alfamas.github.io)
+[![GitHub Stars](https://img.shields.io/github/stars/alfamas/alfamas.github.io?style=for-the-badge)](https://github.com/alfamas/alfamas.github.io/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/alfamas/alfamas.github.io?style=for-the-badge)](https://github.com/alfamas/alfamas.github.io/network)
+[![GitHub Issues](https://img.shields.io/github/issues/alfamas/alfamas.github.io?style=for-the-badge)](https://github.com/alfamas/alfamas.github.io/issues)
+[![License](https://img.shields.io/github/license/alfamas/alfamas.github.io?style=for-the-badge)](https://github.com/alfamas/alfamas.github.io/blob/main/LICENSE)
 
 > **A modern, responsive portfolio website showcasing expertise in Travel Technology, GDS Integration, and Payment Gateway Solutions.**
 
@@ -12,7 +12,7 @@
 
 ## 🚀 Live Demo
 
-Visit the live website: **[alfamas.github.io/portfolio](https://alfamas.github.io/portfolio)**
+Visit the live website: **[alfamas.github.io/portfolio](https://alfamas.github.io)**
 
 ## 📋 Table of Contents
 
@@ -100,8 +100,8 @@ The website is built with modern web technologies and follows best practices for
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/alfamas/portfolio.git
-   cd portfolio
+   git clone https://github.com/alfamas/alfamas.github.io.git
+   cd alfamas.github.io
    ```
 
 2. **Open the project**
@@ -251,7 +251,7 @@ The website uses Tailwind CSS classes. Key color schemes:
 3. **Navigate to Pages section**
 4. **Select source: Deploy from branch**
 5. **Choose branch: main**
-6. **Your site will be live at**: `https://yourusername.github.io/portfolio`
+6. **Your site will be live at**: `https://yourusername.github.io/`
 
 ### Alternative Hosting
 
@@ -324,7 +324,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **MAS Yasin Arafat**
 
-- 🌐 **Website**: [alfamas.github.io/portfolio](https://alfamas.github.io/portfolio)
+- 🌐 **Website**: [alfamas.github.io/portfolio](https://alfamas.github.io)
 - 📧 **Email**: arafat0951@gmail.com
 - 💼 **LinkedIn**: [linkedin.com/in/masyasinarafat](https://www.linkedin.com/in/masyasinarafat/)
 - 🐙 **GitHub**: [github.com/alfamas](https://github.com/alfamas)
@@ -337,8 +337,8 @@ If this project helped you, please give it a ⭐️ on GitHub!
 
 ### Share the Project
 
-[![Twitter](https://img.shields.io/badge/Share_on-Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/intent/tweet?text=Check%20out%20this%20amazing%20portfolio%20template!&url=https://github.com/alfamas/portfolio)
-[![LinkedIn](https://img.shields.io/badge/Share_on-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/alfamas/portfolio)
+[![Twitter](https://img.shields.io/badge/Share_on-Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/intent/tweet?text=Check%20out%20this%20amazing%20portfolio%20template!&url=https://github.com/alfamas/alfamas.github.io)
+[![LinkedIn](https://img.shields.io/badge/Share_on-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/alfamas/alfamas.github.io)
 
 ---
 
@@ -354,9 +354,9 @@ _Empowering the future of travel technology_
 
 ## 📊 Project Stats
 
-![GitHub repo size](https://img.shields.io/github/repo-size/alfamas/portfolio)
-![GitHub last commit](https://img.shields.io/github/last-commit/alfamas/portfolio)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/alfamas/portfolio)
+![GitHub repo size](https://img.shields.io/github/repo-size/alfamas/alfamas.github.io)
+![GitHub last commit](https://img.shields.io/github/last-commit/alfamas/alfamas.github.io)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/alfamas/alfamas.github.io)
 
 ## 🔄 Version History
 
