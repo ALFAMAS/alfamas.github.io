@@ -1,0 +1,5 @@
+# Canonical location: https://alfamas.dev/.well-known/security.txt
+Contact: mailto:arafat0951@gmail.com
+Expires: 2027-07-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://alfamas.dev/.well-known/security.txt
