@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MAS Yasin Arafat — Travel Technology Engineer</title>
+    <title>MAS Yasin Arafat | Travel Technology Engineer</title>
     <meta
       name="description"
-      content="MAS Yasin Arafat builds airline distribution and payment systems — NDC/GDS integrations, booking engines, and full-stack TypeScript infrastructure. Sydney, Australia."
+      content="MAS Yasin Arafat builds airline distribution and payment systems: NDC/GDS integrations, booking engines, and full-stack TypeScript infrastructure. Sydney, Australia."
     />
     <link rel="canonical" href="https://alfamas.dev/" />
-    <meta name="theme-color" content="#f7f9fb" />
+    <meta name="theme-color" content="#060b12" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="MAS Yasin Arafat — Travel Technology Engineer" />
+    <meta property="og:title" content="MAS Yasin Arafat | Travel Technology Engineer" />
     <meta
       property="og:description"
       content="Airline distribution and payment systems: NDC/GDS integrations, booking engines, full-stack TypeScript infrastructure."
@@ -23,34 +23,15 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23071018'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%2306b6d4' text-anchor='middle'%3EYA%3C/text%3E%3C/svg%3E"
     />
     <script>
-      // Apply saved theme before first paint to avoid a flash
+      // Dark is the default; apply a saved light preference before first paint
       try {
-        if (localStorage.getItem("theme") === "dark") {
-          document.documentElement.dataset.theme = "dark";
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.dataset.theme = "light";
         }
       } catch (e) {}
     </script>
     <style>
       :root {
-        --bg: #f7f9fb;
-        --bg-panel: #ffffff;
-        --bg-inset: #eef2f6;
-        --border: #dbe3ea;
-        --border-strong: #b8c4cf;
-        --text: #0c1420;
-        --text-dim: #46535f;
-        --text-faint: #7b8794;
-        --accent: #0e7490;
-        --accent-bright: #0891b2;
-        --glow: rgba(8, 145, 178, 0.16);
-        --grid-line: rgba(12, 74, 110, 0.06);
-        --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
-        --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
-          "Liberation Mono", monospace;
-      }
-
-      :root[data-theme="dark"] {
         --bg: #060b12;
         --bg-panel: #0b131d;
         --bg-inset: #0f1926;
@@ -63,6 +44,25 @@
         --accent-bright: #67e8f9;
         --glow: rgba(34, 211, 238, 0.14);
         --grid-line: rgba(103, 232, 249, 0.05);
+        --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+
+      :root[data-theme="light"] {
+        --bg: #f7f9fb;
+        --bg-panel: #ffffff;
+        --bg-inset: #eef2f6;
+        --border: #dbe3ea;
+        --border-strong: #b8c4cf;
+        --text: #0c1420;
+        --text-dim: #46535f;
+        --text-faint: #7b8794;
+        --accent: #0e7490;
+        --accent-bright: #0891b2;
+        --glow: rgba(8, 145, 178, 0.16);
+        --grid-line: rgba(12, 74, 110, 0.06);
       }
 
       * {
@@ -277,12 +277,12 @@
         box-shadow: 0 0 14px var(--glow);
       }
 
-      #theme-toggle .moon,
-      :root[data-theme="dark"] #theme-toggle .sun {
+      #theme-toggle .sun,
+      :root[data-theme="light"] #theme-toggle .moon {
         display: none;
       }
 
-      :root[data-theme="dark"] #theme-toggle .moon {
+      :root[data-theme="light"] #theme-toggle .sun {
         display: block;
       }
 
@@ -707,6 +707,79 @@
         text-decoration: underline;
       }
 
+      .live-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        vertical-align: middle;
+        margin-left: 0.6rem;
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+        border-radius: 999px;
+        padding: 0.16rem 0.6rem;
+      }
+
+      .live-badge .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+        animation: pulse 2.4s ease-in-out infinite;
+      }
+
+      /* ---------- repo list ---------- */
+
+      .repo-list {
+        list-style: none;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--bg-panel);
+        padding: 0.25rem 1.5rem;
+      }
+
+      .repo-list li {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.85rem 0;
+      }
+
+      .repo-list li + li {
+        border-top: 1px solid var(--border);
+      }
+
+      .repo-list a {
+        font-family: var(--mono);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      .repo-list a:hover {
+        color: var(--accent);
+      }
+
+      .repo-list .desc {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--text-dim);
+      }
+
+      .repo-list .year {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        color: var(--text-faint);
+        white-space: nowrap;
+      }
+
       /* ---------- about ---------- */
 
       .about-grid {
@@ -949,7 +1022,7 @@
             <p class="status"><span class="dot" aria-hidden="true"></span> Open to opportunities · Sydney, AU</p>
             <h1>MAS Yasin <span class="grad">Arafat</span></h1>
             <p class="role">
-              I build <strong>airline distribution and payment systems</strong> —
+              I build <strong>airline distribution and payment systems</strong>:
               NDC and GDS integrations, booking engines, and the full-stack
               TypeScript infrastructure around them.
             </p>
@@ -971,14 +1044,14 @@
         </section>
 
         <section id="capabilities" aria-labelledby="cap-title">
-          <p class="kicker reveal" id="cap-title">// 01 — Capabilities</p>
+          <p class="kicker reveal" id="cap-title">// 01 :: Capabilities</p>
           <div class="grid">
             <article class="cell reveal">
               <span class="idx">[GDS]</span>
               <h3>GDS Integration</h3>
               <p>
                 Search, pricing, and booking against Amadeus, Sabre, and
-                Travelport — the classic global distribution systems that
+                Travelport, the classic global distribution systems that
                 power airline inventory.
               </p>
             </article>
@@ -995,7 +1068,7 @@
               <span class="idx">[PAY]</span>
               <h3>Payment Gateways</h3>
               <p>
-                Wiring gateways such as CyberSource into booking flows —
+                Wiring gateways such as CyberSource into booking flows:
                 authorization, capture, multi-currency handling, and failure
                 recovery.
               </p>
@@ -1014,7 +1087,7 @@
               <h3>Full-Stack TypeScript</h3>
               <p>
                 Node.js and Bun services with Hono, Next.js frontends,
-                PostgreSQL and Redis — from schema to UI.
+                PostgreSQL and Redis, from schema to UI.
               </p>
             </article>
             <article class="cell reveal">
@@ -1022,7 +1095,7 @@
               <h3>Reliability &amp; Observability</h3>
               <p>
                 Rate limiting, circuit breakers, retries with backoff,
-                OpenTelemetry tracing, and Prometheus metrics — so bookings
+                OpenTelemetry tracing, and Prometheus metrics, so bookings
                 don't fail quietly.
               </p>
             </article>
@@ -1030,7 +1103,33 @@
         </section>
 
         <section id="work" aria-labelledby="work-title">
-          <p class="kicker reveal" id="work-title">// 02 — Repositories</p>
+          <p class="kicker reveal" id="work-title">// 02 :: Work</p>
+
+          <article class="project reveal">
+            <div class="project-head">
+              <h3>
+                <a href="https://ticketmet.com" rel="noopener">Ticketmet</a>
+                <span class="live-badge"><span class="dot" aria-hidden="true"></span>Live</span>
+              </h3>
+              <span class="repo">ticketmet.com</span>
+            </div>
+            <p>
+              An online travel agency for searching, pricing, and booking
+              flights, running in production. I built and operate the
+              platform end to end: GDS-backed search, booking management,
+              and integrated payments. The platform code lives in private
+              repositories.
+            </p>
+            <ul class="tags" aria-label="Technologies">
+              <li>OTA</li>
+              <li>Flight booking</li>
+              <li>GDS</li>
+              <li>Payments</li>
+            </ul>
+            <a class="project-link" href="https://ticketmet.com" rel="noopener"
+              >Visit ticketmet.com →</a
+            >
+          </article>
 
           <article class="project reveal">
             <div class="project-head">
@@ -1041,8 +1140,8 @@
             </div>
             <p>
               A Node.js client for the Verteil NDC API covering the full
-              airline order lifecycle — shopping, pricing, booking, changes,
-              and cancellation. Built for production use: OAuth2 token
+              airline order lifecycle: shopping, pricing, booking, changes,
+              and cancellation. Built for production use with OAuth2 token
               management, circuit breaker, Redis-backed distributed rate
               limiting, retry with exponential backoff, HMAC-validated
               webhooks, OpenTelemetry tracing, Prometheus metrics, TypeScript
@@ -1071,9 +1170,9 @@
               A full-stack SaaS starter: Hono API and Next.js dashboard in a
               monorepo, with authentication (OAuth, passkeys, MFA, magic
               links), multi-tenant organizations, Stripe billing, SCIM
-              provisioning, audit logging, and security hardening — CSRF,
+              provisioning, audit logging, and security hardening (CSRF,
               SSRF and open-redirect guards, input sanitization, and log
-              redaction — wired in from the start.
+              redaction) wired in from the start.
             </p>
             <ul class="tags" aria-label="Technologies">
               <li>TypeScript</li>
@@ -1097,9 +1196,9 @@
             </div>
             <p>
               This site. A single static page with no build step, no
-              frameworks, and no external requests — system fonts, inline CSS
-              and SVG, a light/dark theme toggle, and scroll animations that
-              respect <code>prefers-reduced-motion</code>.
+              frameworks, and no external requests: system fonts, inline CSS
+              and SVG, a dark theme with a light toggle, and scroll
+              animations that respect <code>prefers-reduced-motion</code>.
             </p>
             <ul class="tags" aria-label="Technologies">
               <li>HTML</li>
@@ -1113,13 +1212,67 @@
           </article>
         </section>
 
+        <section id="more-repos" aria-labelledby="more-title">
+          <p class="kicker reveal" id="more-title">// 03 :: More on GitHub</p>
+          <ul class="repo-list reveal">
+            <li>
+              <div>
+                <a href="https://github.com/alfamas/qb-car-music">qb-car-music</a>
+                <span class="desc">In-game car music script for FiveM (QBCore)</span>
+              </div>
+              <span class="year">2026</span>
+            </li>
+            <li>
+              <div>
+                <a href="https://github.com/alfamas/CYBS-test">CYBS-test</a>
+                <span class="desc">CyberSource payment gateway integration tests</span>
+              </div>
+              <span class="year">2024</span>
+            </li>
+            <li>
+              <div>
+                <a href="https://github.com/alfamas/Library-Management-PHP-MySql"
+                  >Library-Management-PHP-MySql</a
+                >
+                <span class="desc">Library management system in PHP and MySQL</span>
+              </div>
+              <span class="year">2024</span>
+            </li>
+            <li>
+              <div>
+                <a href="https://github.com/alfamas/websocket-node-practise"
+                  >websocket-node-practise</a
+                >
+                <span class="desc">WebSocket experiments in Node.js</span>
+              </div>
+              <span class="year">2024</span>
+            </li>
+            <li>
+              <div>
+                <a href="https://github.com/alfamas/mka-grapple">mka-grapple</a>
+              </div>
+              <span class="year">2024</span>
+            </li>
+            <li>
+              <div>
+                <a href="https://github.com/alfamas/qb-farming">qb-farming</a>
+                <span class="desc">Farming gameplay script for FiveM (QBCore)</span>
+              </div>
+              <span class="year">2023</span>
+            </li>
+          </ul>
+          <a class="project-link reveal" href="https://github.com/alfamas?tab=repositories"
+            >All repositories on GitHub →</a
+          >
+        </section>
+
         <section id="about" class="about" aria-labelledby="about-title">
-          <p class="kicker reveal" id="about-title">// 03 — About</p>
+          <p class="kicker reveal" id="about-title">// 04 :: About</p>
           <div class="about-grid">
             <div class="reveal">
               <p>
-                I work in travel technology — the systems that search, price,
-                and book flights. That means integrating
+                I work in travel technology, building the systems that
+                search, price, and book flights. That means integrating
                 <strong>GDS platforms</strong> (Amadeus, Sabre, Travelport),
                 implementing <strong>IATA NDC</strong>, connecting low-cost
                 carriers, and wiring payment gateways such as CyberSource into
@@ -1128,7 +1281,7 @@
               <p>
                 Day to day that's API engineering: REST and SOAP integrations,
                 authentication, idempotent order handling, and the operational
-                concerns — rate limits, retries, observability — that keep
+                concerns (rate limits, retries, observability) that keep
                 bookings from failing quietly.
               </p>
               <p>
@@ -1164,12 +1317,12 @@
         </section>
 
         <section id="contact" class="contact" aria-labelledby="contact-title">
-          <p class="kicker reveal" id="contact-title">// 04 — Contact</p>
+          <p class="kicker reveal" id="contact-title">// 05 :: Contact</p>
           <div class="contact-grid">
             <div class="reveal">
               <p>
                 Whether it's an NDC integration, a payment flow, or a
-                full-stack build — I'm happy to talk.
+                full-stack build, I'm happy to talk.
               </p>
               <p>
                 The fastest way to reach me is
@@ -1218,14 +1371,14 @@
         var root = document.documentElement;
         var toggle = document.getElementById("theme-toggle");
         toggle.addEventListener("click", function () {
-          var dark = root.dataset.theme === "dark";
-          if (dark) {
+          var light = root.dataset.theme === "light";
+          if (light) {
             delete root.dataset.theme;
           } else {
-            root.dataset.theme = "dark";
+            root.dataset.theme = "light";
           }
           try {
-            localStorage.setItem("theme", dark ? "light" : "dark");
+            localStorage.setItem("theme", light ? "dark" : "light");
           } catch (e) {}
         });
 
