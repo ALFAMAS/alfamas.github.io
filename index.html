@@ -1,2735 +1,622 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MAS Yasin Arafat - Full Stack Developer</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAS Yasin Arafat — Travel Technology Engineer</title>
+    <meta
+      name="description"
+      content="MAS Yasin Arafat builds airline distribution and payment systems — NDC/GDS integrations, booking engines, and full-stack TypeScript infrastructure. Sydney, Australia."
     />
+    <link rel="canonical" href="https://alfamas.dev/" />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MAS Yasin Arafat — Travel Technology Engineer" />
+    <meta
+      property="og:description"
+      content="Airline distribution and payment systems: NDC/GDS integrations, booking engines, full-stack TypeScript infrastructure."
+    />
+    <meta property="og:url" content="https://alfamas.dev/" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0c0e'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%2366d9a8' text-anchor='middle'%3EYA%3C/text%3E%3C/svg%3E"
     />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+      :root {
+        --bg: #0b0c0e;
+        --bg-raised: #121417;
+        --border: #23262b;
+        --text: #e6e8eb;
+        --text-dim: #9aa1a9;
+        --text-faint: #6b7280;
+        --accent: #66d9a8;
+        --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
 
       * {
-        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      }
-
-      .gradient-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      }
-
-      .glass-effect {
-        backdrop-filter: blur(20px);
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .animate-float {
-        animation: float 3s ease-in-out infinite;
-      }
-
-      .fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
-      }
-
-      .typing-cursor::after {
-        content: "|";
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        50% {
-          opacity: 1;
-        }
-        51%,
-        100% {
-          opacity: 0;
-        }
-      }
-
-      .scroll-smooth {
+      html {
         scroll-behavior: smooth;
       }
 
-      .nav-blur {
-        backdrop-filter: blur(20px);
-        background: rgba(255, 255, 255, 0.95);
-      }
-
-      /* Mobile Menu Animation */
-      .mobile-menu-enter {
-        transform: translateY(-10px);
-        opacity: 0;
-      }
-
-      .mobile-menu-enter-active {
-        transform: translateY(0);
-        opacity: 1;
-        transition: all 0.3s ease-out;
-      }
-
-      .mobile-menu-exit {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .mobile-menu-exit-active {
-        transform: translateY(-10px);
-        opacity: 0;
-        transition: all 0.3s ease-in;
-      }
-
-      /* Hamburger Animation */
-      .hamburger-line {
-        transition: all 0.3s ease;
-        transform-origin: center;
-      }
-
-      .hamburger-active .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .hamburger-active .hamburger-line:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger-active .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-
-      /* Improved responsive typography */
-      @media (max-width: 640px) {
-        .responsive-title {
-          font-size: 2.5rem;
-          line-height: 1.2;
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
         }
+      }
 
-        .responsive-subtitle {
-          font-size: 1.25rem;
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        background: var(--accent);
+        color: var(--bg);
+        padding: 0.5rem 1rem;
+        z-index: 100;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        left: 0;
+      }
+
+      .wrap {
+        max-width: 44rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* ---------- header ---------- */
+
+      header {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.25rem 0;
+      }
+
+      .site-nav .brand {
+        font-family: var(--mono);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      .site-nav .brand span {
+        color: var(--accent);
+      }
+
+      .site-nav ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      .site-nav ul a {
+        font-family: var(--mono);
+        font-size: 0.8125rem;
+        color: var(--text-dim);
+        text-decoration: none;
+      }
+
+      .site-nav ul a:hover {
+        color: var(--text);
+      }
+
+      /* ---------- sections ---------- */
+
+      section {
+        padding: 4.5rem 0 0;
+      }
+
+      .kicker {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.25rem;
+      }
+
+      /* ---------- hero ---------- */
+
+      .hero {
+        padding: 6.5rem 0 1rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.25rem, 6vw, 3.25rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .hero .role {
+        font-size: 1.125rem;
+        color: var(--text-dim);
+        max-width: 36rem;
+        margin-bottom: 1.75rem;
+      }
+
+      .hero .role strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        font-family: var(--mono);
+        font-size: 0.875rem;
+      }
+
+      .hero-links a {
+        color: var(--text-dim);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2px;
+      }
+
+      .hero-links a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      /* ---------- work ---------- */
+
+      .project {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.75rem;
+        background: var(--bg-raised);
+      }
+
+      .project + .project {
+        margin-top: 1.25rem;
+      }
+
+      .project-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .project h3 {
+        font-size: 1.1875rem;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+      }
+
+      .project h3 a {
+        text-decoration: none;
+      }
+
+      .project h3 a:hover {
+        color: var(--accent);
+      }
+
+      .project .repo {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        color: var(--text-faint);
+      }
+
+      .project p {
+        color: var(--text-dim);
+        margin-bottom: 1rem;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 0.9rem;
+        list-style: none;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        color: var(--text-faint);
+      }
+
+      .tags li::before {
+        content: "·";
+        margin-right: 0.9rem;
+        color: var(--border);
+      }
+
+      .tags li:first-child::before {
+        content: none;
+        margin: 0;
+      }
+
+      .project-link {
+        display: inline-block;
+        margin-top: 1.1rem;
+        font-family: var(--mono);
+        font-size: 0.8125rem;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .project-link:hover {
+        text-decoration: underline;
+      }
+
+      /* ---------- about ---------- */
+
+      .about p + p {
+        margin-top: 1rem;
+      }
+
+      .about p {
+        color: var(--text-dim);
+        max-width: 38rem;
+      }
+
+      .about strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .facts {
+        margin-top: 2rem;
+        border-top: 1px solid var(--border);
+        list-style: none;
+      }
+
+      .facts li {
+        display: grid;
+        grid-template-columns: 9rem 1fr;
+        gap: 1rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .facts .label {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        padding-top: 0.2rem;
+      }
+
+      .facts .value {
+        color: var(--text-dim);
+      }
+
+      @media (max-width: 480px) {
+        .facts li {
+          grid-template-columns: 1fr;
+          gap: 0.15rem;
         }
+      }
+
+      /* ---------- contact ---------- */
+
+      .contact p {
+        color: var(--text-dim);
+        max-width: 36rem;
+        margin-bottom: 2rem;
+      }
+
+      .contact a {
+        color: var(--text);
+      }
+
+      form {
+        display: grid;
+        gap: 1rem;
+        max-width: 36rem;
+      }
+
+      .field {
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      label {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+      }
+
+      input,
+      textarea {
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--text);
+        font: inherit;
+        padding: 0.65rem 0.85rem;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--accent);
+        outline: none;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 8rem;
+      }
+
+      button[type="submit"] {
+        justify-self: start;
+        background: var(--accent);
+        color: var(--bg);
+        border: 0;
+        border-radius: 6px;
+        font: 600 0.9375rem var(--sans);
+        padding: 0.7rem 1.5rem;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        filter: brightness(1.1);
+      }
+
+      .honeypot {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+
+      /* ---------- footer ---------- */
+
+      footer {
+        margin-top: 5rem;
+        border-top: 1px solid var(--border);
+        padding: 2rem 0 2.5rem;
+      }
+
+      .foot {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        font-family: var(--mono);
+        font-size: 0.8125rem;
+        color: var(--text-faint);
+      }
+
+      .foot a {
+        color: var(--text-dim);
+        text-decoration: none;
+      }
+
+      .foot a:hover {
+        color: var(--accent);
+      }
+
+      .foot ul {
+        display: flex;
+        gap: 1.25rem;
+        list-style: none;
       }
     </style>
   </head>
-  <body class="scroll-smooth">
-    <!-- Navigation -->
-    <nav
-      class="fixed top-0 w-full nav-blur z-50 border-b border-gray-200 transition-all duration-300"
-      id="navbar"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <!-- Logo -->
-          <a
-            href="#"
-            class="text-xl sm:text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300"
-          >
-            ALFAMAS
-          </a>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex space-x-6 lg:space-x-8">
-            <a
-              href="#home"
-              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
-            >
-              Home
-              <span
-                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-            <a
-              href="#about"
-              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
-            >
-              About
-              <span
-                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-            <a
-              href="#services"
-              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
-            >
-              Services
-              <span
-                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-            <a
-              href="#skills"
-              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
-            >
-              Skills
-              <span
-                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-            <a
-              href="#portfolio"
-              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
-            >
-              Portfolio
-              <span
-                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-            <a
-              href="#contact"
-              class="nav-link text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
-            >
-              Contact
-              <span
-                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-          </div>
-
-          <!-- Mobile Menu Button -->
-          <button
-            class="md:hidden flex flex-col space-y-1.5 group p-2"
-            onclick="toggleMobileMenu()"
-            id="hamburger-btn"
-          >
-            <span
-              class="hamburger-line w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
-            ></span>
-            <span
-              class="hamburger-line w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
-            ></span>
-            <span
-              class="hamburger-line w-6 h-0.5 bg-gray-700 transition-all duration-300 group-hover:bg-blue-600"
-            ></span>
-          </button>
-        </div>
+    <header>
+      <div class="wrap">
+        <nav class="site-nav" aria-label="Main">
+          <a class="brand" href="/">yasin<span>@</span>alfamas</a>
+          <ul>
+            <li><a href="#work">work</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+        </nav>
       </div>
+    </header>
 
-      <!-- Mobile Menu -->
-      <div
-        class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-lg"
-        id="mobile-menu"
-      >
-        <div class="px-4 py-3 space-y-1">
-          <a
-            href="#home"
-            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
-            onclick="closeMobileMenu()"
-            >Home</a
-          >
-          <a
-            href="#about"
-            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
-            onclick="closeMobileMenu()"
-            >About</a
-          >
-          <a
-            href="#services"
-            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
-            onclick="closeMobileMenu()"
-            >Services</a
-          >
-          <a
-            href="#skills"
-            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
-            onclick="closeMobileMenu()"
-            >Skills</a
-          >
-          <a
-            href="#portfolio"
-            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
-            onclick="closeMobileMenu()"
-            >Portfolio</a
-          >
-          <a
-            href="#contact"
-            class="block text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium py-3 px-2 rounded-lg transition-all duration-300"
-            onclick="closeMobileMenu()"
-            >Contact</a
-          >
-        </div>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section
-      class="pt-16 min-h-screen gradient-bg flex items-center relative overflow-hidden"
-      id="home"
-    >
-      <!-- Background Pattern -->
-      <div class="absolute inset-0 opacity-20">
-        <div
-          class="absolute inset-0"
-          style="
-            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><defs><pattern id=&quot;grid&quot; width=&quot;10&quot; height=&quot;10&quot; patternUnits=&quot;userSpaceOnUse&quot;><path d=&quot;M 10 0 L 0 0 0 10&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;0.5&quot;/></pattern></defs><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(%23grid)&quot;/></svg>');
-          "
-        ></div>
-      </div>
-
-      <!-- Floating Elements -->
-      <div
-        class="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-white/10 rounded-full animate-float"
-      ></div>
-      <div
-        class="absolute top-40 right-4 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400/20 rounded-full animate-float"
-        style="animation-delay: 1s"
-      ></div>
-      <div
-        class="absolute bottom-20 left-4 sm:left-20 w-20 h-20 sm:w-24 sm:h-24 bg-blue-400/10 rounded-full animate-float"
-        style="animation-delay: 2s"
-      ></div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <!-- Hero Content -->
-          <div class="text-white space-y-6 fade-in-up text-center lg:text-left">
-            <div class="space-y-4">
-              <p class="text-base sm:text-lg text-white/80 font-medium">
-                👋 Hello, my name is
-              </p>
-              <h1
-                class="responsive-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-              >
-                <span class="text-yellow-400">MAS Yasin Arafat</span>
-                <div class="inline-flex items-center ml-2">
-                  <i
-                    class="fas fa-check-circle text-blue-400 text-xl sm:text-2xl"
-                    title="Verified Professional"
-                  ></i>
-                </div>
-              </h1>
-              <div
-                class="responsive-subtitle text-lg sm:text-xl md:text-2xl text-white/90 mb-2"
-              >
-                And I'm a
-                <span
-                  class="text-yellow-400 font-semibold typing-cursor"
-                  id="typing-text"
-                  >Developer & Travel Tech Expert</span
-                >
-              </div>
-              <div class="text-base sm:text-lg text-white/80 font-medium mb-4">
-                Travel Tech | Payment Gateway Integration Specialist
-              </div>
-              <p
-                class="text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed mx-auto lg:mx-0"
-              >
-                Enthusiastic travel technology expert specializing in GDS, NDC,
-                payment gateway integrations, and API development. Leading
-                innovative solutions in the travel industry with expertise in
-                Amadeus, Sabre, Travelport, and modern payment systems.
-              </p>
-            </div>
-
-            <!-- CTA Buttons -->
-            <div
-              class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start"
-            >
-              <a
-                href="#portfolio"
-                class="glass-effect border border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
-              >
-                <i
-                  class="fas fa-eye group-hover:scale-110 transition-transform duration-300"
-                ></i>
-                View My Work
-              </a>
-              <a
-                href="#contact"
-                class="bg-transparent border-2 border-white/50 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
-              >
-                <i
-                  class="fas fa-envelope group-hover:scale-110 transition-transform duration-300"
-                ></i>
-                Contact Me
-              </a>
-            </div>
-
-            <!-- Social Links -->
-            <div
-              class="flex gap-4 pt-6 justify-center lg:justify-start"
-              id="hero-social-links"
-            >
-              <!-- Social links will be populated by JavaScript -->
-            </div>
-          </div>
-
-          <!-- Hero Image -->
-          <div
-            class="flex justify-center lg:justify-end fade-in-up order-first lg:order-last"
-            style="animation-delay: 0.3s"
-          >
-            <div class="relative">
-              <div
-                class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-700 hover:scale-105 group"
-              >
-                <img
-                  src="images/pp1.jpg"
-                  alt="MAS Yasin Arafat"
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 group-hover:opacity-0 transition-opacity duration-300"
-                ></div>
-              </div>
-              <!-- Floating Badge -->
-              <div
-                class="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-white text-gray-800 px-3 sm:px-4 py-2 rounded-full shadow-lg font-semibold text-xs sm:text-sm animate-bounce"
-              >
-                💻 Available for work
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div
-          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce hidden sm:block"
-        >
-          <div class="flex flex-col items-center gap-2">
-            <span class="text-sm">Scroll down</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="py-16 sm:py-20 bg-gray-50" id="about">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-16">
-          <h2
-            class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-          >
-            About Me
-          </h2>
-          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-            Get to know more about my journey, skills, and passion for
-            technology
+    <main id="main">
+      <div class="wrap">
+        <section class="hero" aria-label="Introduction">
+          <p class="kicker">Sydney, Australia</p>
+          <h1>MAS Yasin Arafat</h1>
+          <p class="role">
+            I build <strong>airline distribution and payment systems</strong> —
+            NDC and GDS integrations, booking engines, and the full-stack
+            TypeScript infrastructure around them.
           </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <!-- About Image -->
-          <div class="relative group order-last lg:order-first">
-            <div class="w-full max-w-lg mx-auto">
-              <div class="relative overflow-hidden rounded-2xl">
-                <img
-                  src="/images/pp2.jpg"
-                  alt="About Me"
-                  class="w-full transform group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-purple-600/30 group-hover:opacity-0 transition-opacity duration-300"
-                ></div>
-              </div>
-              <!-- Decorative Elements -->
-              <div
-                class="absolute -top-4 -right-4 w-16 h-16 sm:w-20 sm:h-20 bg-yellow-400 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
-              ></div>
-              <div
-                class="absolute -bottom-4 -left-4 w-12 h-12 sm:w-16 sm:h-16 bg-blue-600 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-300"
-              ></div>
-            </div>
+          <div class="hero-links">
+            <a href="https://github.com/alfamas" rel="me">github</a>
+            <a href="https://www.linkedin.com/in/masyasinarafat/" rel="me">linkedin</a>
+            <a href="mailto:arafat0951@gmail.com">email</a>
           </div>
+        </section>
 
-          <!-- About Content -->
-          <div class="space-y-6 sm:space-y-8">
-            <div>
-              <h3
-                class="text-2xl sm:text-3xl font-bold text-blue-600 mb-4 sm:mb-6"
-              >
-                Travel Technology Expert
+        <section id="work" aria-labelledby="work-title">
+          <p class="kicker" id="work-title">Selected work</p>
+
+          <article class="project">
+            <div class="project-head">
+              <h3>
+                <a href="https://github.com/alfamas/verteil-node-sdk">verteil-node-sdk</a>
               </h3>
-              <div
-                class="space-y-4 text-gray-600 leading-relaxed text-base sm:text-lg"
-              >
-                <p>
-                  I am an enthusiastic, self-motivated, and hardworking
-                  individual with a relentless drive for excellence.
-                </p>
-                <p>
-                  My expertise spans across
-                  <span class="text-blue-600 font-semibold"
-                    >GDS systems (Amadeus, Sabre, Travelport)</span
-                  >, NDC, LCC, payment gateway integrations (CyberSource), and
-                  comprehensive API development using XML SOAP and REST JSON
-                  architectures. I'm an OTA expert specializing in travel
-                  technology solutions.
-                </p>
-              </div>
+              <span class="repo">github.com/alfamas/verteil-node-sdk</span>
             </div>
-          </div>
-
-          <!-- Education & Skills -->
-          <div
-            class="p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100"
-          >
-            <h4 class="text-lg font-bold text-gray-900 mb-4">
-              Education & Top Skills
-            </h4>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <h5 class="font-semibold text-blue-600 mb-2">🎓 Education</h5>
-                <p class="text-gray-700 text-sm sm:text-base">
-                  Bachelor of Business (Information Systems / Hospitality Management)
-                </p>
-                <p class="text-xs sm:text-sm text-gray-600">
-                  Canterbury Institute of Managemnet, Sydney, Australia 
-                </p>
-              </div>
-
-              <div>
-                <h5 class="font-semibold text-blue-600 mb-2">🚀 Top Skills</h5>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs sm:text-sm"
-                    >Sales & Marketing</span
-                  >
-                  <span
-                    class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs sm:text-sm"
-                    >Team Management</span
-                  >
-                  <span
-                    class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs sm:text-sm"
-                    >Problem Solving</span
-                  >
-                  <span
-                    class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs sm:text-sm"
-                    >Communication</span
-                  >
-                  <span
-                    class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs sm:text-sm"
-                    >Team Leadership</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick Info Cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div
-              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-300"
-                >
-                  <i class="fas fa-code text-blue-600 text-lg sm:text-xl"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
-                    MERN Stack
-                  </h4>
-                  <p class="text-gray-600 text-xs sm:text-sm">
-                    MongoDB | Express | React | Node
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors duration-300"
-                >
-                  <i class="fas fa-globe text-green-600 text-lg sm:text-xl"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
-                    Expertise
-                  </h4>
-                  <p class="text-gray-600 text-xs sm:text-sm">
-                    GDS | NDC | Payment Gateways
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-300"
-                >
-                  <i
-                    class="fas fa-plane text-purple-600 text-lg sm:text-xl"
-                  ></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
-                    Specialization
-                  </h4>
-                  <p class="text-gray-600 text-xs sm:text-sm">
-                    Travel Technology & APIs
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors duration-300"
-                >
-                  <i
-                    class="fas fa-credit-card text-red-600 text-lg sm:text-xl"
-                  ></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 text-sm sm:text-base">
-                    Payment Systems
-                  </h4>
-                  <p class="text-gray-600 text-xs sm:text-sm">
-                    CyberSource | Gateway Integration
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stats -->
-        <div
-          class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20"
-        >
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
-          >
-            <div
-              class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
-            >
-              7+
-            </div>
-            <div class="text-gray-600 font-medium">Years of Experience</div>
-            <div class="text-sm text-gray-500 mt-1">Since 2018</div>
-          </div>
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
-          >
-            <div
-              class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
-            >
-              50+
-            </div>
-            <div class="text-gray-600 font-medium">Projects Completed</div>
-            <div class="text-sm text-gray-500 mt-1">Web & Mobile Apps</div>
-          </div>
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
-          >
-            <div
-              class="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300"
-            >
-              100+
-            </div>
-            <div class="text-gray-600 font-medium">Happy Clients</div>
-            <div class="text-sm text-gray-500 mt-1">Worldwide</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="py-16 sm:py-20 bg-white" id="services">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-16">
-          <h2
-            class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-          >
-            My Services
-          </h2>
-          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-            I offer comprehensive development and security services to bring
-            your digital vision to life
-          </p>
-        </div>
-
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-        >
-          <!-- Service 1: Travel Technology Solutions -->
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            ></div>
-            <div class="relative z-10">
-              <div
-                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-              >
-                <i class="fas fa-plane text-white text-xl sm:text-2xl"></i>
-              </div>
-              <h3
-                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300"
-              >
-                Travel Technology Solutions
-              </h3>
-              <p
-                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
-              >
-                Comprehensive travel technology development including GDS
-                integration, NDC implementation, and OTA platform development
-                with modern architecture and scalable solutions.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >GDS</span
-                >
-                <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >NDC</span
-                >
-                <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >OTA</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 2: Payment Gateway Integration -->
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            ></div>
-            <div class="relative z-10">
-              <div
-                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-              >
-                <i
-                  class="fas fa-credit-card text-white text-xl sm:text-2xl"
-                ></i>
-              </div>
-              <h3
-                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors duration-300"
-              >
-                Payment Gateway Integration
-              </h3>
-              <p
-                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
-              >
-                Secure payment processing solutions with CyberSource,
-                multi-currency support, fraud detection, and seamless checkout
-                experiences for travel and e-commerce platforms.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >CyberSource</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Multi-Currency</span
-                >
-                <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Fraud Detection</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 3: API Development -->
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            ></div>
-            <div class="relative z-10">
-              <div
-                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-              >
-                <i class="fas fa-code text-white text-xl sm:text-2xl"></i>
-              </div>
-              <h3
-                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300"
-              >
-                API Design & Development
-              </h3>
-              <p
-                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
-              >
-                Custom API development using XML SOAP and REST JSON
-                architectures, ensuring robust integration capabilities with
-                third-party systems and scalable microservices.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >REST API</span
-                >
-                <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >XML SOAP</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Microservices</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 4: GDS System Integration -->
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-orange-50 to-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            ></div>
-            <div class="relative z-10">
-              <div
-                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-              >
-                <i class="fas fa-globe text-white text-xl sm:text-2xl"></i>
-              </div>
-              <h3
-                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300"
-              >
-                GDS System Integration
-              </h3>
-              <p
-                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
-              >
-                Expert integration with major GDS providers including Amadeus,
-                Sabre, Travelport, HitchHiker, and Verteil for comprehensive
-                travel inventory access and booking capabilities.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Amadeus</span
-                >
-                <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Sabre</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Travelport</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 5: Team Leadership -->
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            ></div>
-            <div class="relative z-10">
-              <div
-                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-              >
-                <i class="fas fa-users text-white text-xl sm:text-2xl"></i>
-              </div>
-              <h3
-                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300"
-              >
-                Team Leadership & Management
-              </h3>
-              <p
-                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
-              >
-                Strategic leadership in technology teams, project management,
-                and cross-functional collaboration to drive innovation and
-                deliver exceptional results in competitive environments.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Leadership</span
-                >
-                <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Team Management</span
-                >
-                <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Innovation</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 6: Sales & Marketing -->
-          <div
-            class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-pink-50 to-rose-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            ></div>
-            <div class="relative z-10">
-              <div
-                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-              >
-                <i class="fas fa-chart-line text-white text-xl sm:text-2xl"></i>
-              </div>
-              <h3
-                class="text-lg sm:text-xl font-bold text-gray-900 mb-4 group-hover:text-pink-600 transition-colors duration-300"
-              >
-                Sales & Marketing Strategy
-              </h3>
-              <p
-                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
-              >
-                Strategic sales and marketing solutions for travel technology
-                products, digital transformation initiatives, and business
-                growth acceleration with data-driven insights and competitive
-                market analysis.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Sales Strategy</span
-                >
-                <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Marketing</span
-                >
-                <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs sm:text-sm font-medium"
-                  >Growth Hacking</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="py-16 sm:py-20 bg-gray-50" id="skills">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 sm:mb-16">
-          <h2
-            class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-          >
-            Technical Skills
-          </h2>
-          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-            My expertise spans across travel technology, payment systems, and
-            modern development frameworks
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <!-- Skills Content -->
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-xl sm:text-2xl font-bold text-blue-600 mb-4">
-                Travel Technology Expertise
-              </h3>
-              <p
-                class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base"
-              >
-                With extensive experience in travel industry technology, I've
-                mastered various GDS systems, payment gateway integrations, and
-                API development. My expertise enables seamless integration of
-                complex travel booking systems with modern payment solutions.
-              </p>
-              <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
-                I'm constantly updating my knowledge with the latest industry
-                standards and emerging technologies to deliver cutting-edge
-                solutions.
-              </p>
-            </div>
-
-            <!-- Tech Stack Icons -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div
-                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
-              >
-                <i
-                  class="fas fa-plane text-2xl sm:text-3xl text-blue-500 mb-2 group-hover:scale-110 transition-transform duration-300"
-                ></i>
-                <span
-                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
-                  >Amadeus</span
-                >
-              </div>
-              <div
-                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
-              >
-                <i
-                  class="fas fa-globe text-2xl sm:text-3xl text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300"
-                ></i>
-                <span
-                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
-                  >Sabre</span
-                >
-              </div>
-              <div
-                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
-              >
-                <i
-                  class="fas fa-credit-card text-2xl sm:text-3xl text-purple-500 mb-2 group-hover:scale-110 transition-transform duration-300"
-                ></i>
-                <span
-                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
-                  >CyberSource</span
-                >
-              </div>
-              <div
-                class="flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 group"
-              >
-                <i
-                  class="fas fa-code text-2xl sm:text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300"
-                ></i>
-                <span
-                  class="text-xs sm:text-sm text-gray-600 font-medium text-center"
-                  >REST API</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Skills Bars -->
-          <div class="space-y-6">
-            <!-- GDS Systems -->
-            <div class="skill-item">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold text-sm sm:text-base"
-                  >GDS Systems (Amadeus, Sabre, Travelport)</span
-                >
-                <span class="text-blue-600 font-semibold text-sm sm:text-base"
-                  >95%</span
-                >
-              </div>
-              <div
-                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
-              >
-                <div
-                  class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
-                  style="width: 95%"
-                ></div>
-              </div>
-            </div>
-
-            <!-- Payment Gateway Integration -->
-            <div class="skill-item">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold text-sm sm:text-base"
-                  >Payment Gateway Integration</span
-                >
-                <span class="text-green-600 font-semibold text-sm sm:text-base"
-                  >90%</span
-                >
-              </div>
-              <div
-                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
-              >
-                <div
-                  class="bg-gradient-to-r from-green-400 to-green-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
-                  style="width: 90%"
-                ></div>
-              </div>
-            </div>
-
-            <!-- API Development -->
-            <div class="skill-item">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold text-sm sm:text-base"
-                  >API Development (REST/SOAP)</span
-                >
-                <span class="text-purple-600 font-semibold text-sm sm:text-base"
-                  >88%</span
-                >
-              </div>
-              <div
-                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
-              >
-                <div
-                  class="bg-gradient-to-r from-purple-400 to-purple-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
-                  style="width: 88%"
-                ></div>
-              </div>
-            </div>
-
-            <!-- Team Leadership -->
-            <div class="skill-item">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold text-sm sm:text-base"
-                  >Team Leadership & Management</span
-                >
-                <span class="text-orange-600 font-semibold text-sm sm:text-base"
-                  >92%</span
-                >
-              </div>
-              <div
-                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
-              >
-                <div
-                  class="bg-gradient-to-r from-orange-400 to-orange-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
-                  style="width: 92%"
-                ></div>
-              </div>
-            </div>
-
-            <!-- Travel Technology -->
-            <div class="skill-item">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold text-sm sm:text-base"
-                  >Travel Technology (NDC, LCC)</span
-                >
-                <span class="text-indigo-600 font-semibold text-sm sm:text-base"
-                  >85%</span
-                >
-              </div>
-              <div
-                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
-              >
-                <div
-                  class="bg-gradient-to-r from-indigo-400 to-indigo-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
-                  style="width: 85%"
-                ></div>
-              </div>
-            </div>
-
-            <!-- Sales & Marketing -->
-            <div class="skill-item">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-gray-700 font-semibold text-sm sm:text-base"
-                  >Sales & Marketing Strategy</span
-                >
-                <span class="text-pink-600 font-semibold text-sm sm:text-base"
-                  >80%</span
-                >
-              </div>
-              <div
-                class="w-full bg-gray-200 rounded-full h-2 sm:h-3 relative overflow-hidden"
-              >
-                <div
-                  class="bg-gradient-to-r from-pink-400 to-pink-500 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out skill-progress"
-                  style="width: 80%"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="py-20 bg-white" id="portfolio">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            My Portfolio
-          </h2>
-          <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-            Showcasing innovative travel technology solutions and successful
-            project implementations
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1: Ticketemet.com -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-blue-500 to-blue-700 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-plane text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >Live Project</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300"
-              >
-                Ticketemet.com Platform
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Comprehensive travel booking platform with GDS integration,
-                multi-payment gateway support, and advanced booking management
-                system.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >GDS Integration</span
-                >
-                <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Payment Gateway</span
-                >
-                <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Booking Engine</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">CTO & Lead Developer</span>
-                <a
-                  href="#"
-                  class="text-blue-600 hover:text-blue-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: Payment Gateway Solution -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-green-500 to-emerald-700 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-credit-card text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >Enterprise</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300"
-              >
-                CyberSource Integration Suite
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Advanced payment processing solution with fraud detection,
-                multi-currency support, and seamless checkout experience for
-                travel industry.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >CyberSource</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Multi-Currency</span
-                >
-                <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Fraud Detection</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">Payment Specialist</span>
-                <a
-                  href="#"
-                  class="text-green-600 hover:text-green-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3: API Integration Platform -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-purple-500 to-indigo-700 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-code text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >API Solution</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300"
-              >
-                Multi-GDS API Gateway
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Unified API gateway connecting multiple GDS providers (Amadeus,
-                Sabre, Travelport) with standardized REST/SOAP interfaces.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >REST API</span
-                >
-                <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >XML SOAP</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Microservices</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">API Architect</span>
-                <a
-                  href="#"
-                  class="text-purple-600 hover:text-purple-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4: NDC Implementation -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-globe text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >Innovation</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-300"
-              >
-                NDC & LCC Integration
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Next-generation airline distribution platform implementing IATA
-                NDC standards with low-cost carrier direct connections.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >NDC</span
-                >
-                <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >LCC</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >IATA Standards</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">Technology Lead</span>
-                <a
-                  href="#"
-                  class="text-orange-600 hover:text-orange-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5: Team Management Dashboard -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-indigo-500 to-blue-700 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-users text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >Management</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-300"
-              >
-                Team Performance Analytics
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Comprehensive team management and performance tracking dashboard
-                with real-time analytics and productivity insights.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Analytics</span
-                >
-                <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Team Tracking</span
-                >
-                <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Performance</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">Project Manager</span>
-                <a
-                  href="#"
-                  class="text-indigo-600 hover:text-indigo-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6: Marketing Automation -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-chart-line text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >Marketing</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-600 transition-colors duration-300"
-              >
-                Travel Marketing Automation
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Intelligent marketing automation platform for travel agencies
-                with personalized campaigns and conversion optimization.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Automation</span
-                >
-                <span
-                  class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Personalization</span
-                >
-                <span
-                  class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Conversion</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">Marketing Lead</span>
-                <a
-                  href="#"
-                  class="text-pink-600 hover:text-pink-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 7: ZeroAuth -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-cyan-500 to-teal-700 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-shield-halved text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >SaaS Starter</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-cyan-600 transition-colors duration-300"
-              >
-                ZeroAuth
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Production-ready SaaS boilerplate with enterprise-grade
-                authentication — OAuth, passkeys, MFA, SSO, RBAC, and an admin
-                panel. Built on Hono, Next.js, PostgreSQL, and Redis.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-cyan-100 text-cyan-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Authentication</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >OAuth & SSO</span
-                >
-                <span
-                  class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Next.js</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">Creator & Developer</span>
-                <a
-                  href="https://github.com/alfamas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-cyan-600 hover:text-cyan-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 8: EzyRoaster -->
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden"
-          >
-            <div
-              class="h-48 bg-gradient-to-br from-amber-500 to-yellow-600 relative overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-black/20"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <i
-                  class="fas fa-calendar-check text-white text-4xl group-hover:scale-110 transition-transform duration-300"
-                ></i>
-              </div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium"
-                  >In Development</span
-                >
-              </div>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-amber-600 transition-colors duration-300"
-              >
-                EzyRoaster
-              </h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">
-                Compliance-first rostering, time &amp; attendance, and Modern
-                Award interpretation for Australian SMBs — export-ready,
-                award-coded timesheets to Xero, MYOB, and Employment Hero.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Rostering</span
-                >
-                <span
-                  class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Award Compliance</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
-                  >Time &amp; Attendance</span
-                >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-500">Creator & Developer</span>
-                <a
-                  href="https://github.com/alfamas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-amber-600 hover:text-amber-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  View Details <i class="fas fa-arrow-right ml-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="py-16 sm:py-20 bg-gray-900 text-white" id="contact">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 sm:mb-16">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Get In Touch
-          </h2>
-          <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full mb-4"></div>
-          <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Ready to discuss your next travel technology project? Let's connect
-            and explore how we can work together.
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <!-- Contact Info -->
-          <div class="space-y-8">
-            <div>
-              <h3 class="text-xl sm:text-2xl font-bold text-yellow-400 mb-6">
-                Let's Start a Conversation
-              </h3>
-              <p
-                class="text-gray-300 leading-relaxed text-base sm:text-lg mb-8"
-              >
-                I'm always excited to discuss new opportunities, innovative
-                projects, and potential collaborations in the travel technology
-                space. Whether you need GDS integration, payment gateway
-                solutions, or strategic technology leadership, I'm here to help.
-              </p>
-            </div>
-
-            <!-- Contact Items -->
-            <div class="space-y-6">
-              <div class="flex items-center gap-4 group">
-                <div
-                  class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300"
-                >
-                  <i class="fas fa-envelope text-white text-lg sm:text-xl"></i>
-                </div>
-                <div>
-                  <h4
-                    class="font-semibold text-white mb-1 text-sm sm:text-base"
-                  >
-                    Email Address
-                  </h4>
-                  <p class="text-gray-300 text-sm sm:text-base">
-                    arafat0951@gmail.com
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 group">
-                <div
-                  class="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-xl flex items-center justify-center group-hover:bg-green-700 transition-colors duration-300"
-                >
-                  <i class="fas fa-phone-alt text-white text-lg sm:text-xl"></i>
-                </div>
-                <div>
-                  <h4
-                    class="font-semibold text-white mb-1 text-sm sm:text-base"
-                  >
-                    Phone Number
-                  </h4>
-                  <p class="text-gray-300 text-sm sm:text-base">
-                    +61 424 276 062 <br />
-                    +88 017 277 062 00
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 group">
-                <div
-                  class="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-xl flex items-center justify-center group-hover:bg-green-700 transition-colors duration-300"
-                >
-                  <i
-                    class="fas fa-map-marker-alt text-white text-lg sm:text-xl"
-                  ></i>
-                </div>
-                <div>
-                  <h4
-                    class="font-semibold text-white mb-1 text-sm sm:text-base"
-                  >
-                    Location
-                  </h4>
-                  <p class="text-gray-300 text-sm sm:text-base">
-                    Darlinghurst, Sydney, Australia
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 group">
-                <div
-                  class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-600 rounded-xl flex items-center justify-center group-hover:bg-orange-700 transition-colors duration-300"
-                >
-                  <i class="fas fa-clock text-white text-lg sm:text-xl"></i>
-                </div>
-                <div>
-                  <h4
-                    class="font-semibold text-white mb-1 text-sm sm:text-base"
-                  >
-                    Response Time
-                  </h4>
-                  <p class="text-gray-300 text-sm sm:text-base">
-                    Within 24 hours
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social Links -->
-            <div class="pt-8">
-              <h4 class="font-semibold text-white mb-4 text-sm sm:text-base">
-                Connect With Me
-              </h4>
-              <div class="flex gap-4" id="contact-social-links">
-                <!-- Social links will be populated by JavaScript -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div
-            class="bg-gray-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-gray-700 shadow-2xl"
-          >
-            <!-- Security Status Indicator -->
-            <div class="flex items-center justify-between mb-6">
-              <h3 class="text-xl sm:text-2xl font-bold text-white">
-                Send Message
-              </h3>
-              <div class="flex items-center gap-2 text-green-400 text-sm">
-                <i class="fas fa-shield-check animate-pulse"></i>
-                <span class="hidden sm:inline">Secure Form</span>
-              </div>
-            </div>
-
-            <form
-              class="space-y-6"
-              id="contact-form"
-              autocomplete="off"
-              action="https://formspree.io/f/mjkoqlaz"
-              method="POST"
-              novalidate
-            >
-              <!-- Security Fields (Hidden) -->
-              <input
-                type="hidden"
-                name="_subject"
-                value="Portfolio Contact - Travel Tech Inquiry"
-              />
-              <input type="hidden" name="_template" value="basic" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="#contact" />
-
-              <!-- Honeypot (Spam Trap) -->
-              <div
-                style="position: absolute; left: -5000px; top: -5000px"
-                aria-hidden="true"
-              >
-                <label>Don't fill this out if you're human:</label>
-                <input
-                  type="text"
-                  name="_gotcha"
-                  tabindex="-1"
-                  autocomplete="off"
-                />
-              </div>
-
-              <!-- Timestamp for rate limiting -->
-              <input type="hidden" name="_timestamp" id="form-timestamp" />
-
-              <!-- Name and Email Row -->
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    for="contact-name"
-                    class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
-                  >
-                    <i class="fas fa-user mr-2 text-blue-400"></i>Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-name"
-                    name="name"
-                    maxlength="100"
-                    pattern="^[a-zA-Z\s\-'\.]{2,100}$"
-                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
-                    placeholder="Your Name"
-                    required
-                    autocomplete="name"
-                  />
-                  <div
-                    class="text-red-400 text-sm mt-1 hidden"
-                    id="name-error"
-                  ></div>
-                </div>
-
-                <div>
-                  <label
-                    for="contact-email"
-                    class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
-                  >
-                    <i class="fas fa-envelope mr-2 text-blue-400"></i>Email
-                    Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="contact-email"
-                    name="email"
-                    maxlength="255"
-                    class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
-                    placeholder="your@email.com"
-                    required
-                    autocomplete="email"
-                  />
-                  <div
-                    class="text-red-400 text-sm mt-1 hidden"
-                    id="email-error"
-                  ></div>
-                </div>
-              </div>
-
-              <!-- Subject -->
-              <div>
-                <label
-                  for="contact-subject"
-                  class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
-                >
-                  <i class="fas fa-tag mr-2 text-blue-400"></i>Subject *
-                </label>
-                <select
-                  id="contact-subject"
-                  name="subject"
-                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-sm sm:text-base"
-                  required
-                >
-                  <option value="">Select a topic</option>
-                  <option value="Project Inquiry">Project Inquiry</option>
-                  <option value="GDS Integration">GDS Integration</option>
-                  <option value="Payment Gateway">
-                    Payment Gateway Solutions
-                  </option>
-                  <option value="API Development">API Development</option>
-                  <option value="Consultation">Consultation Request</option>
-                  <option value="Collaboration">
-                    Collaboration Opportunity
-                  </option>
-                  <option value="Other">Other</option>
-                </select>
-                <div
-                  class="text-red-400 text-sm mt-1 hidden"
-                  id="subject-error"
-                ></div>
-              </div>
-
-              <!-- Message -->
-              <div>
-                <label
-                  for="contact-message"
-                  class="block text-gray-300 font-medium mb-2 text-sm sm:text-base"
-                >
-                  <i class="fas fa-comment mr-2 text-blue-400"></i>Message *
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows="6"
-                  minlength="10"
-                  maxlength="2000"
-                  class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none text-sm sm:text-base"
-                  placeholder="Tell me about your project requirements..."
-                  required
-                ></textarea>
-                <div class="flex justify-between items-center mt-1">
-                  <div
-                    class="text-red-400 text-sm hidden"
-                    id="message-error"
-                  ></div>
-                  <div class="text-gray-400 text-sm" id="char-count">
-                    0/2000 characters
-                  </div>
-                </div>
-              </div>
-
-              <!-- Privacy Consent -->
-              <div class="bg-gray-700/30 border border-gray-600 rounded-lg p-4">
-                <div class="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="privacy-consent"
-                    name="privacy_consent"
-                    required
-                    class="mt-1 w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
-                  />
-                  <label
-                    for="privacy-consent"
-                    class="text-sm text-gray-300 flex-1 leading-relaxed"
-                  >
-                    I consent to having this website store my submitted
-                    information for responding to my inquiry. *
-                  </label>
-                </div>
-                <div
-                  class="text-red-400 text-sm mt-2 hidden"
-                  id="privacy-error"
-                ></div>
-              </div>
-
-              <!-- Submit Button -->
-              <button
-                type="submit"
-                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 group text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
-                id="contact-submit-btn"
-              >
-                <i
-                  class="fas fa-paper-plane group-hover:translate-x-1 transition-transform duration-300"
-                ></i>
-                <span id="submit-text">Send Secure Message</span>
-              </button>
-
-              <!-- Status Messages -->
-              <div id="form-status" class="hidden"></div>
-            </form>
-          </div>
-        </div>
-
-        <script>
-          // Security Configuration
-          const SECURITY_CONFIG = {
-            maxSubmissions: 3,
-            timeWindow: 3600000, // 1 hour
-            minMessageLength: 10,
-            maxMessageLength: 2000,
-            rateLimit: true,
-          };
-
-          // Initialize security features when page loads
-          document.addEventListener("DOMContentLoaded", function () {
-            initializeSecurity();
-            setupFormValidation();
-            setupCharacterCount();
-            checkRateLimit();
-          });
-
-          function initializeSecurity() {
-            // Set form timestamp for rate limiting
-            document.getElementById("form-timestamp").value = Date.now();
-
-            // Add security event listeners
-            detectAutomatedBehavior();
-          }
-
-          function detectAutomatedBehavior() {
-            let humanInteractionDetected = false;
-
-            // Detect human-like interactions
-            ["mousemove", "keypress", "scroll", "click"].forEach((event) => {
-              document.addEventListener(
-                event,
-                function () {
-                  humanInteractionDetected = true;
-                },
-                { once: true }
-              );
-            });
-
-            // Check interaction before form submission
-            document
-              .getElementById("contact-form")
-              .addEventListener("submit", function (e) {
-                if (!humanInteractionDetected) {
-                  console.warn("Potential bot detected - no human interaction");
-                  e.preventDefault();
-                  return false;
-                }
-              });
-          }
-
-          function checkRateLimit() {
-            if (!SECURITY_CONFIG.rateLimit) return;
-
-            const submissions = JSON.parse(
-              localStorage.getItem("formSubmissions") || "[]"
-            );
-            const now = Date.now();
-            const recentSubmissions = submissions.filter(
-              (time) => now - time < SECURITY_CONFIG.timeWindow
-            );
-
-            if (recentSubmissions.length >= SECURITY_CONFIG.maxSubmissions) {
-              const nextSubmissionTime = new Date(
-                recentSubmissions[0] + SECURITY_CONFIG.timeWindow
-              );
-              showStatus(
-                `Rate limit exceeded. Next submission allowed at ${nextSubmissionTime.toLocaleTimeString()}`,
-                "error"
-              );
-              document.getElementById("contact-submit-btn").disabled = true;
-              return false;
-            }
-            return true;
-          }
-
-          function setupFormValidation() {
-            const form = document.getElementById("contact-form");
-            const inputs = form.querySelectorAll("input, textarea, select");
-
-            inputs.forEach((input) => {
-              input.addEventListener("blur", () => validateField(input));
-              input.addEventListener("input", () => clearFieldError(input));
-            });
-          }
-
-          function setupCharacterCount() {
-            const messageField = document.getElementById("contact-message");
-            const charCount = document.getElementById("char-count");
-
-            messageField.addEventListener("input", function () {
-              const length = this.value.length;
-              charCount.textContent = `${length}/${SECURITY_CONFIG.maxMessageLength} characters`;
-
-              // Color coding based on character count
-              if (length > SECURITY_CONFIG.maxMessageLength * 0.9) {
-                charCount.className = "text-yellow-400 text-sm";
-              } else if (length > SECURITY_CONFIG.maxMessageLength * 0.95) {
-                charCount.className = "text-red-400 text-sm";
-              } else {
-                charCount.className = "text-gray-400 text-sm";
-              }
-            });
-          }
-
-          function validateField(field) {
-            const value = field.value.trim();
-            let isValid = true;
-            let errorMessage = "";
-
-            switch (field.id) {
-              case "contact-name":
-                if (value.length < 2) {
-                  errorMessage = "Name must be at least 2 characters";
-                  isValid = false;
-                } else if (!/^[a-zA-Z\s\-'\.]{2,100}$/.test(value)) {
-                  errorMessage = "Name contains invalid characters";
-                  isValid = false;
-                }
-                break;
-
-              case "contact-email":
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(value)) {
-                  errorMessage = "Please enter a valid email address";
-                  isValid = false;
-                }
-                break;
-
-              case "contact-message":
-                if (value.length < SECURITY_CONFIG.minMessageLength) {
-                  errorMessage = `Message must be at least ${SECURITY_CONFIG.minMessageLength} characters`;
-                  isValid = false;
-                } else if (value.length > SECURITY_CONFIG.maxMessageLength) {
-                  errorMessage = `Message cannot exceed ${SECURITY_CONFIG.maxMessageLength} characters`;
-                  isValid = false;
-                }
-                break;
-
-              case "contact-subject":
-                if (!value) {
-                  errorMessage = "Please select a subject";
-                  isValid = false;
-                }
-                break;
-            }
-
-            showFieldError(field, errorMessage);
-            return isValid;
-          }
-
-          function showFieldError(field, message) {
-            const errorElement = document.getElementById(
-              `${field.id.replace("contact-", "")}-error`
-            );
-            if (errorElement) {
-              if (message) {
-                errorElement.textContent = message;
-                errorElement.classList.remove("hidden");
-                field.classList.add("border-red-500", "focus:border-red-500");
-              } else {
-                errorElement.classList.add("hidden");
-                field.classList.remove(
-                  "border-red-500",
-                  "focus:border-red-500"
-                );
-              }
-            }
-          }
-
-          function clearFieldError(field) {
-            showFieldError(field, "");
-          }
-
-          // Handle form submission with security checks
-          document
-            .getElementById("contact-form")
-            .addEventListener("submit", function (e) {
-              e.preventDefault();
-
-              // Security Check 1: Honeypot
-              const honeypot = this.querySelector('[name="_gotcha"]');
-              if (honeypot && honeypot.value) {
-                console.warn("Honeypot triggered - likely spam");
-                return false;
-              }
-
-              // Security Check 2: Rate limiting
-              if (!checkRateLimit()) {
-                return false;
-              }
-
-              // Security Check 3: Form validation
-              const requiredFields = this.querySelectorAll("[required]");
-              let formIsValid = true;
-
-              requiredFields.forEach((field) => {
-                if (!validateField(field)) {
-                  formIsValid = false;
-                }
-              });
-
-              // Security Check 4: Privacy consent
-              const privacyConsent = document.getElementById("privacy-consent");
-              if (!privacyConsent.checked) {
-                showFieldError(privacyConsent, "Privacy consent is required");
-                formIsValid = false;
-              }
-
-              if (!formIsValid) {
-                showStatus(
-                  "Please correct the errors above before submitting",
-                  "error"
-                );
-                return false;
-              }
-
-              // Security Check 5: Timing analysis (prevent rapid submissions)
-              const formTimestamp = parseInt(
-                document.getElementById("form-timestamp").value
-              );
-              const timeDiff = Date.now() - formTimestamp;
-              if (timeDiff < 3000) {
-                // Less than 3 seconds
-                showStatus(
-                  "Please take a moment to review your message before submitting",
-                  "warning"
-                );
-                return false;
-              }
-
-              // All security checks passed - proceed with submission
-              submitForm(this);
-            });
-
-          function submitForm(form) {
-            const submitBtn = document.getElementById("contact-submit-btn");
-            const submitText = document.getElementById("submit-text");
-            const originalText = submitText.textContent;
-
-            // Update button state
-            submitBtn.disabled = true;
-            submitText.innerHTML =
-              '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-
-            // Create FormData object
-            const formData = new FormData(form);
-
-            // Submit to Formspree
-            fetch(form.action, {
-              method: "POST",
-              body: formData,
-              headers: {
-                Accept: "application/json",
-              },
-            })
-              .then((response) => {
-                if (response.ok) {
-                  // Success
-                  showStatus(
-                    "✅ Message sent successfully! I'll get back to you within 24 hours.",
-                    "success"
-                  );
-                  form.reset();
-                  document.getElementById("char-count").textContent =
-                    "0/2000 characters";
-
-                  // Record submission for rate limiting
-                  if (SECURITY_CONFIG.rateLimit) {
-                    const submissions = JSON.parse(
-                      localStorage.getItem("formSubmissions") || "[]"
-                    );
-                    submissions.push(Date.now());
-                    // Keep only submissions within the time window
-                    const filtered = submissions.filter(
-                      (time) => Date.now() - time < SECURITY_CONFIG.timeWindow
-                    );
-                    localStorage.setItem(
-                      "formSubmissions",
-                      JSON.stringify(filtered)
-                    );
-                  }
-                } else {
-                  throw new Error("Network response was not ok");
-                }
-              })
-              .catch((error) => {
-                console.error("Form submission error:", error);
-                showStatus(
-                  "❌ Failed to send message. Please try again or contact me directly at arafat0951@gmail.com",
-                  "error"
-                );
-              })
-              .finally(() => {
-                // Reset button state
-                submitBtn.disabled = false;
-                submitText.textContent = originalText;
-              });
-          }
-
-          function showStatus(message, type) {
-            const statusElement = document.getElementById("form-status");
-            statusElement.className = "p-4 rounded-lg border";
-
-            switch (type) {
-              case "success":
-                statusElement.className +=
-                  " bg-green-900/20 border-green-500 text-green-400";
-                break;
-              case "error":
-                statusElement.className +=
-                  " bg-red-900/20 border-red-500 text-red-400";
-                break;
-              case "warning":
-                statusElement.className +=
-                  " bg-yellow-900/20 border-yellow-500 text-yellow-400";
-                break;
-              default:
-                statusElement.className +=
-                  " bg-blue-900/20 border-blue-500 text-blue-400";
-            }
-
-            statusElement.innerHTML = `
-                <div class="flex items-center gap-3">
-                    <i class="fas fa-${
-                      type === "success"
-                        ? "check-circle"
-                        : type === "error"
-                        ? "exclamation-triangle"
-                        : "info-circle"
-                    }"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-
-            statusElement.classList.remove("hidden");
-
-            // Auto-remove success messages after 5 seconds
-            if (type === "success") {
-              setTimeout(() => {
-                statusElement.classList.add("hidden");
-              }, 5000);
-            }
-
-            // Scroll to status message
-            statusElement.scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
-            });
-          }
-
-          // Additional security: Clear form data on page unload
-          window.addEventListener("beforeunload", function () {
-            const form = document.getElementById("contact-form");
-            if (form) form.reset();
-          });
-        </script>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black text-white py-8 sm:py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <!-- About Column -->
-          <div class="sm:col-span-2">
-            <h3 class="text-xl sm:text-2xl font-bold text-blue-400 mb-4">
-              ALFAMAS
-            </h3>
-            <p class="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">
-              Travel Technology Expert specializing in GDS integration, payment
-              gateway solutions, and innovative travel platforms. Leading the
-              future of travel technology with cutting-edge solutions.
+            <p>
+              A Node.js client for the Verteil NDC API covering the full
+              airline order lifecycle — shopping, pricing, booking, changes,
+              and cancellation. Built for production use: OAuth2 token
+              management, circuit breaker, Redis-backed distributed rate
+              limiting, retry with exponential backoff, HMAC-validated
+              webhooks, OpenTelemetry tracing, Prometheus metrics, TypeScript
+              declarations, a CLI, and a zero-dependency mock adapter for
+              testing.
             </p>
-            <div class="flex gap-4" id="footer-social-links">
-              <!-- Social links will be populated by JavaScript -->
+            <ul class="tags" aria-label="Technologies">
+              <li>Node.js</li>
+              <li>NDC</li>
+              <li>OAuth2</li>
+              <li>Redis</li>
+              <li>OpenTelemetry</li>
+            </ul>
+            <a class="project-link" href="https://github.com/alfamas/verteil-node-sdk"
+              >View source →</a
+            >
+          </article>
+
+          <article class="project">
+            <div class="project-head">
+              <h3><a href="https://github.com/alfamas/zerotrust">zerotrust</a></h3>
+              <span class="repo">github.com/alfamas/zerotrust</span>
             </div>
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-            <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#home"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
-                  >Services</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#portfolio"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
-                  >Portfolio</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
-                  >Contact</a
-                >
-              </li>
+            <p>
+              A full-stack SaaS starter: Hono API and Next.js dashboard in a
+              monorepo, with authentication (OAuth, passkeys, MFA, magic
+              links), multi-tenant organizations, Stripe billing, SCIM
+              provisioning, audit logging, and security hardening — CSRF,
+              SSRF and open-redirect guards, input sanitization, and log
+              redaction — wired in from the start.
+            </p>
+            <ul class="tags" aria-label="Technologies">
+              <li>TypeScript</li>
+              <li>Hono</li>
+              <li>Next.js</li>
+              <li>PostgreSQL</li>
+              <li>Redis</li>
+              <li>Stripe</li>
             </ul>
-          </div>
+            <a class="project-link" href="https://github.com/alfamas/zerotrust"
+              >View source →</a
+            >
+          </article>
+        </section>
 
-          <!-- Services -->
-          <div>
-            <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
-            <ul class="space-y-2">
-              <li>
-                <span class="text-gray-300 text-sm sm:text-base"
-                  >GDS Integration</span
-                >
-              </li>
-              <li>
-                <span class="text-gray-300 text-sm sm:text-base"
-                  >Payment Gateways</span
-                >
-              </li>
-              <li>
-                <span class="text-gray-300 text-sm sm:text-base"
-                  >API Development</span
-                >
-              </li>
-              <li>
-                <span class="text-gray-300 text-sm sm:text-base"
-                  >Team Leadership</span
-                >
-              </li>
-              <li>
-                <span class="text-gray-300 text-sm sm:text-base"
-                  >Travel Technology</span
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Bottom Footer -->
-        <div
-          class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center"
-        >
-          <p
-            class="text-gray-400 text-xs sm:text-sm text-center sm:text-left mb-4 sm:mb-0"
-          >
-            © 2018 -
-            <script>
-              document.write(new Date().getFullYear());
-            </script>
-            All rights reserved by MAS Yasin Arafat | Designed with ❤️ by
-            ALFAMAS
+        <section id="about" class="about" aria-labelledby="about-title">
+          <p class="kicker" id="about-title">About</p>
+          <p>
+            I work in travel technology — the systems that search, price, and
+            book flights. That means integrating
+            <strong>GDS platforms</strong> (Amadeus, Sabre, Travelport),
+            implementing <strong>IATA NDC</strong>, connecting low-cost
+            carriers, and wiring payment gateways such as CyberSource into
+            booking flows.
           </p>
-          <div class="flex items-center gap-4">
-            <span class="text-gray-400 text-xs sm:text-sm">Built with</span>
-            <div class="flex gap-2">
-              <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs"
-                >Tailwind CSS</span
+          <p>
+            Day to day that's API engineering: REST and SOAP integrations,
+            authentication, idempotent order handling, and the operational
+            concerns — rate limits, retries, observability — that keep
+            bookings from failing quietly.
+          </p>
+          <ul class="facts">
+            <li>
+              <span class="label">Focus</span>
+              <span class="value">NDC/GDS integration, payments, booking systems</span>
+            </li>
+            <li>
+              <span class="label">Stack</span>
+              <span class="value">TypeScript, Node.js, Hono, Next.js, PostgreSQL, Redis</span>
+            </li>
+            <li>
+              <span class="label">Education</span>
+              <span class="value"
+                >Bachelor of Business (Information Systems / Hospitality
+                Management), Canterbury Institute of Management, Sydney</span
               >
-              <span class="bg-yellow-600 text-white px-2 py-1 rounded text-xs"
-                >JavaScript</span
-              >
-              <span class="bg-orange-600 text-white px-2 py-1 rounded text-xs"
-                >HTML5</span
-              >
+            </li>
+            <li>
+              <span class="label">Location</span>
+              <span class="value">Sydney, Australia</span>
+            </li>
+          </ul>
+        </section>
+
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+          <p class="kicker" id="contact-title">Contact</p>
+          <p>
+            The fastest way to reach me is
+            <a href="mailto:arafat0951@gmail.com">arafat0951@gmail.com</a>, or
+            use the form below.
+          </p>
+          <form action="https://formspree.io/f/mjkoqlaz" method="POST">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
             </div>
-          </div>
-        </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="honeypot" aria-hidden="true">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </div>
+            <button type="submit">Send message</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap foot">
+        <span>© 2026 MAS Yasin Arafat</span>
+        <ul>
+          <li><a href="https://github.com/alfamas">github</a></li>
+          <li><a href="https://www.linkedin.com/in/masyasinarafat/">linkedin</a></li>
+          <li>
+            <a href="https://github.com/alfamas/alfamas.github.io">source</a>
+          </li>
+        </ul>
       </div>
     </footer>
-
-    <!-- Scroll to Top Button -->
-    <div class="fixed bottom-6 sm:bottom-8 right-6 sm:right-8 z-50">
-      <button
-        onclick="scrollToTop()"
-        class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 flex items-center justify-center group opacity-0 invisible"
-        id="scroll-top"
-      >
-        <i
-          class="fas fa-chevron-up text-lg sm:text-xl group-hover:scale-110 transition-transform duration-300"
-        ></i>
-      </button>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-      // Social Links Configuration
-      const socialLinks = [
-        {
-          name: "GitHub",
-          url: "https://github.com/alfamas",
-          icon: "fab fa-github",
-          color: "hover:bg-gray-700",
-        },
-        {
-          name: "Facebook",
-          url: "https://www.fb.com/masyasinarafat",
-          icon: "fab fa-facebook",
-          color: "hover:bg-blue-600",
-        },
-        {
-          name: "LinkedIn",
-          url: "https://www.linkedin.com/in/masyasinarafat/",
-          icon: "fab fa-linkedin",
-          color: "hover:bg-blue-700",
-        },
-        {
-          name: "Instagram",
-          url: "https://www.instagram.com/masyasinarafat/",
-          icon: "fab fa-instagram",
-          color: "hover:bg-pink-500",
-        },
-      ];
-
-      // Function to generate social links HTML
-      function generateSocialLinks(type = "hero") {
-        let linkClass = "";
-
-        if (type === "hero") {
-          linkClass =
-            "w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 group";
-        } else if (type === "contact") {
-          linkClass =
-            "w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110";
-        } else if (type === "footer") {
-          linkClass =
-            "w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300";
-        }
-
-        return socialLinks
-          .map(
-            (link) => `
-          <a
-            href="${link.url}"
-            target="_blank"
-            class="${linkClass}"
-            title="${link.name}"
-          >
-            <i class="${link.icon} text-xl ${
-              type === "hero"
-                ? "group-hover:scale-125 transition-transform duration-300"
-                : ""
-            }"></i>
-          </a>
-        `
-          )
-          .join("");
-      }
-
-      // Populate social links in different sections
-      document.addEventListener("DOMContentLoaded", function () {
-        // Hero section social links
-        const heroSocialContainer =
-          document.getElementById("hero-social-links");
-        if (heroSocialContainer) {
-          heroSocialContainer.innerHTML = generateSocialLinks("hero");
-        }
-
-        // Contact section social links
-        const contactSocialContainer = document.getElementById(
-          "contact-social-links"
-        );
-        if (contactSocialContainer) {
-          contactSocialContainer.innerHTML = generateSocialLinks("contact");
-        }
-
-        // Footer section social links
-        const footerSocialContainer = document.getElementById(
-          "footer-social-links"
-        );
-        if (footerSocialContainer) {
-          footerSocialContainer.innerHTML = generateSocialLinks("footer");
-        }
-      });
-
-      // Typing Animation
-      const typingTexts = [
-        "Travel Tech Expert",
-        "Payment Gateway Specialist",
-        "GDS Integration Expert",
-        "API Development Architect",
-        "Team Management Professional",
-      ];
-      let textIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-      const typingElement = document.getElementById("typing-text");
-
-      function typeWriter() {
-        const currentText = typingTexts[textIndex];
-
-        if (isDeleting) {
-          typingElement.textContent = currentText.substring(0, charIndex - 1);
-          charIndex--;
-        } else {
-          typingElement.textContent = currentText.substring(0, charIndex + 1);
-          charIndex++;
-        }
-
-        let typeSpeed = isDeleting ? 50 : 100;
-
-        if (!isDeleting && charIndex === currentText.length) {
-          typeSpeed = 2000;
-          isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          textIndex = (textIndex + 1) % typingTexts.length;
-          typeSpeed = 500;
-        }
-
-        setTimeout(typeWriter, typeSpeed);
-      }
-
-      // Start typing animation
-      typeWriter();
-
-      // Mobile Menu Toggle
-      function toggleMobileMenu() {
-        const mobileMenu = document.getElementById("mobile-menu");
-        const hamburgerBtn = document.getElementById("hamburger-btn");
-
-        mobileMenu.classList.toggle("hidden");
-        hamburgerBtn.classList.toggle("hamburger-active");
-      }
-
-      // Close Mobile Menu
-      function closeMobileMenu() {
-        const mobileMenu = document.getElementById("mobile-menu");
-        const hamburgerBtn = document.getElementById("hamburger-btn");
-
-        mobileMenu.classList.add("hidden");
-        hamburgerBtn.classList.remove("hamburger-active");
-      }
-
-      // Scroll to Top
-      function scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
-
-      // Navbar scroll effect and scroll to top button
-      window.addEventListener("scroll", function () {
-        const navbar = document.getElementById("navbar");
-        const scrollTop = document.getElementById("scroll-top");
-
-        if (window.scrollY > 50) {
-          navbar.classList.add("shadow-lg");
-        } else {
-          navbar.classList.remove("shadow-lg");
-        }
-
-        if (window.scrollY > 300) {
-          scrollTop.classList.remove("opacity-0", "invisible");
-          scrollTop.classList.add("opacity-100", "visible");
-        } else {
-          scrollTop.classList.add("opacity-0", "invisible");
-          scrollTop.classList.remove("opacity-100", "visible");
-        }
-      });
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            const navHeight = document.getElementById("navbar").offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
-            });
-
-            // Close mobile menu if open
-            closeMobileMenu();
-          }
-        });
-      });
-
-      // Close mobile menu when clicking outside
-      document.addEventListener("click", function (e) {
-        const mobileMenu = document.getElementById("mobile-menu");
-        const hamburgerBtn = document.getElementById("hamburger-btn");
-
-        if (
-          !hamburgerBtn.contains(e.target) &&
-          !mobileMenu.contains(e.target)
-        ) {
-          closeMobileMenu();
-        }
-      });
-
-      // Contact form submission
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Show success message
-          const button = this.querySelector('button[type="submit"]');
-          const originalText = button.innerHTML;
-
-          button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
-          button.classList.add("bg-green-600", "hover:bg-green-700");
-          button.classList.remove("bg-blue-600", "hover:bg-blue-700");
-
-          setTimeout(() => {
-            button.innerHTML = originalText;
-            button.classList.remove("bg-green-600", "hover:bg-green-700");
-            button.classList.add("bg-blue-600", "hover:bg-blue-700");
-            this.reset();
-          }, 3000);
-        });
-
-      // Intersection Observer for animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("fade-in-up");
-          }
-        });
-      }, observerOptions);
-
-      // Observe elements for animation
-      document.querySelectorAll("section").forEach((section) => {
-        observer.observe(section);
-      });
-
-      // Animate skill bars when in view
-      const skillBars = document.querySelectorAll(".skill-progress");
-      const skillObserver = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const bar = entry.target;
-            const width = bar.style.width;
-            bar.style.width = "0%";
-            setTimeout(() => {
-              bar.style.width = width;
-            }, 200);
-          }
-        });
-      }, observerOptions);
-
-      skillBars.forEach((bar) => {
-        skillObserver.observe(bar);
-      });
-
-      // Handle window resize
-      window.addEventListener("resize", function () {
-        // Close mobile menu on resize to larger screen
-        if (window.innerWidth >= 768) {
-          closeMobileMenu();
-        }
-      });
-    </script>
   </body>
 </html>
