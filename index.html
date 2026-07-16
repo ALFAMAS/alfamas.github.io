@@ -9,7 +9,7 @@
       content="MAS Yasin Arafat builds airline distribution and payment systems — NDC/GDS integrations, booking engines, and full-stack TypeScript infrastructure. Sydney, Australia."
     />
     <link rel="canonical" href="https://alfamas.dev/" />
-    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="theme-color" content="#f7f9fb" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="MAS Yasin Arafat — Travel Technology Engineer" />
     <meta
@@ -17,23 +17,52 @@
       content="Airline distribution and payment systems: NDC/GDS integrations, booking engines, full-stack TypeScript infrastructure."
     />
     <meta property="og:url" content="https://alfamas.dev/" />
+    <meta property="og:image" content="https://alfamas.dev/images/pp1.jpg" />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0c0e'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%2366d9a8' text-anchor='middle'%3EYA%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23071018'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%2306b6d4' text-anchor='middle'%3EYA%3C/text%3E%3C/svg%3E"
     />
+    <script>
+      // Apply saved theme before first paint to avoid a flash
+      try {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch (e) {}
+    </script>
     <style>
       :root {
-        --bg: #0b0c0e;
-        --bg-raised: #121417;
-        --border: #23262b;
-        --text: #e6e8eb;
-        --text-dim: #9aa1a9;
-        --text-faint: #6b7280;
-        --accent: #66d9a8;
+        --bg: #f7f9fb;
+        --bg-panel: #ffffff;
+        --bg-inset: #eef2f6;
+        --border: #dbe3ea;
+        --border-strong: #b8c4cf;
+        --text: #0c1420;
+        --text-dim: #46535f;
+        --text-faint: #7b8794;
+        --accent: #0e7490;
+        --accent-bright: #0891b2;
+        --glow: rgba(8, 145, 178, 0.16);
+        --grid-line: rgba(12, 74, 110, 0.06);
         --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
         --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
           "Liberation Mono", monospace;
+      }
+
+      :root[data-theme="dark"] {
+        --bg: #060b12;
+        --bg-panel: #0b131d;
+        --bg-inset: #0f1926;
+        --border: #1c2a3a;
+        --border-strong: #2d4257;
+        --text: #e4ecf3;
+        --text-dim: #9db0c0;
+        --text-faint: #64778a;
+        --accent: #22d3ee;
+        --accent-bright: #67e8f9;
+        --glow: rgba(34, 211, 238, 0.14);
+        --grid-line: rgba(103, 232, 249, 0.05);
       }
 
       * {
@@ -46,12 +75,6 @@
         scroll-behavior: smooth;
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
-
       body {
         background: var(--bg);
         color: var(--text);
@@ -59,6 +82,53 @@
         font-size: 1.0625rem;
         line-height: 1.65;
         -webkit-font-smoothing: antialiased;
+        transition: background-color 0.35s ease, color 0.35s ease;
+      }
+
+      /* sci-fi grid backdrop */
+      .backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 90%);
+        -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 90%);
+      }
+
+      .orb {
+        position: fixed;
+        z-index: -1;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.5;
+        background: var(--glow);
+        animation: drift 26s ease-in-out infinite alternate;
+      }
+
+      .orb-a {
+        width: 44vw;
+        height: 44vw;
+        top: -18vw;
+        right: -12vw;
+      }
+
+      .orb-b {
+        width: 34vw;
+        height: 34vw;
+        bottom: -14vw;
+        left: -10vw;
+        animation-delay: -13s;
+      }
+
+      @keyframes drift {
+        from {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+          transform: translate3d(-4vw, 5vh, 0) scale(1.15);
+        }
       }
 
       ::selection {
@@ -96,7 +166,7 @@
       }
 
       .wrap {
-        max-width: 44rem;
+        max-width: 72rem;
         margin: 0 auto;
         padding: 0 1.5rem;
       }
@@ -104,18 +174,29 @@
       /* ---------- header ---------- */
 
       header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
       }
 
       .site-nav {
         display: flex;
-        align-items: baseline;
+        flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
-        gap: 1rem;
-        padding: 1.25rem 0;
+        gap: 0.5rem 1rem;
+        padding: 0.9rem 0;
       }
 
-      .site-nav .brand {
+      .nav-right {
+        min-width: 0;
+        flex-wrap: wrap;
+      }
+
+      .brand {
         font-family: var(--mono);
         font-size: 0.9375rem;
         font-weight: 600;
@@ -124,13 +205,19 @@
         color: var(--text);
       }
 
-      .site-nav .brand span {
+      .brand span {
         color: var(--accent);
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
       }
 
       .site-nav ul {
         display: flex;
-        gap: 1.5rem;
+        gap: 1.4rem;
         list-style: none;
       }
 
@@ -142,48 +229,234 @@
       }
 
       .site-nav ul a:hover {
-        color: var(--text);
+        color: var(--accent);
       }
 
-      /* ---------- sections ---------- */
+      @media (max-width: 560px) {
+        .nav-right {
+          gap: 0.75rem;
+        }
+        .site-nav ul {
+          gap: 0.65rem;
+        }
+        .site-nav ul a {
+          font-size: 0.75rem;
+        }
+        .brand {
+          font-size: 0.875rem;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .site-nav ul li:first-child {
+          display: none;
+        }
+      }
+
+      body {
+        overflow-x: clip;
+      }
+
+      #theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--bg-panel);
+        color: var(--text-dim);
+        cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
+      }
+
+      #theme-toggle:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        box-shadow: 0 0 14px var(--glow);
+      }
+
+      #theme-toggle .moon,
+      :root[data-theme="dark"] #theme-toggle .sun {
+        display: none;
+      }
+
+      :root[data-theme="dark"] #theme-toggle .moon {
+        display: block;
+      }
+
+      /* ---------- shared section chrome ---------- */
 
       section {
-        padding: 4.5rem 0 0;
+        padding: 5rem 0 0;
       }
 
       .kicker {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
         font-family: var(--mono);
         font-size: 0.75rem;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
         color: var(--accent);
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.75rem;
+      }
+
+      .kicker::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        opacity: 0.4;
+      }
+
+      /* scroll-reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .reveal.in {
+        opacity: 1;
+        transform: none;
       }
 
       /* ---------- hero ---------- */
 
       .hero {
-        padding: 6.5rem 0 1rem;
+        padding: 5.5rem 0 1rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+        gap: 3.5rem;
+        align-items: center;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 3.5rem;
+        }
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        border: 1px solid var(--border);
+        background: var(--bg-panel);
+        border-radius: 999px;
+        padding: 0.35rem 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .status .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+        animation: pulse 2.4s ease-in-out infinite;
+      }
+
+      @media (max-width: 400px) {
+        .status {
+          font-size: 0.65rem;
+          letter-spacing: 0.06em;
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.35;
+        }
       }
 
       .hero h1 {
-        font-size: clamp(2.25rem, 6vw, 3.25rem);
-        font-weight: 700;
+        font-size: clamp(2.5rem, 5.5vw, 4rem);
+        font-weight: 750;
         letter-spacing: -0.03em;
-        line-height: 1.1;
-        margin-bottom: 1rem;
+        line-height: 1.06;
+        margin-bottom: 1.1rem;
+      }
+
+      .hero h1 .grad {
+        background: linear-gradient(100deg, var(--accent), var(--accent-bright), var(--accent));
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shimmer 6s linear infinite;
+      }
+
+      @keyframes shimmer {
+        to {
+          background-position: 200% 0;
+        }
       }
 
       .hero .role {
-        font-size: 1.125rem;
+        font-size: 1.1875rem;
         color: var(--text-dim);
-        max-width: 36rem;
-        margin-bottom: 1.75rem;
+        max-width: 34rem;
+        margin-bottom: 1.9rem;
       }
 
       .hero .role strong {
         color: var(--text);
         font-weight: 600;
+      }
+
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-bottom: 1.9rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font: 600 0.9375rem var(--sans);
+        text-decoration: none;
+        border-radius: 8px;
+        padding: 0.68rem 1.35rem;
+        transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+        border: 1px solid var(--accent);
+      }
+
+      .btn-primary:hover {
+        box-shadow: 0 0 22px var(--glow), 0 4px 14px var(--glow);
+        transform: translateY(-1px);
+      }
+
+      .btn-ghost {
+        border: 1px solid var(--border-strong);
+        color: var(--text);
+        background: transparent;
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: 0 0 16px var(--glow);
       }
 
       .hero-links {
@@ -206,13 +479,162 @@
         border-color: var(--accent);
       }
 
-      /* ---------- work ---------- */
+      /* portrait with HUD frame */
+      .portrait {
+        position: relative;
+        justify-self: center;
+        width: min(21rem, 80vw);
+      }
+
+      .portrait img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 1px solid var(--border-strong);
+        filter: saturate(1.02);
+      }
+
+      .portrait::before,
+      .portrait::after,
+      .portrait .corner::before,
+      .portrait .corner::after {
+        content: "";
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        border: 2px solid var(--accent);
+        transition: all 0.3s ease;
+      }
+
+      .portrait::before {
+        top: -8px;
+        left: -8px;
+        border-right: 0;
+        border-bottom: 0;
+      }
+
+      .portrait::after {
+        top: -8px;
+        right: -8px;
+        border-left: 0;
+        border-bottom: 0;
+      }
+
+      .portrait .corner::before {
+        bottom: -8px;
+        left: -8px;
+        border-right: 0;
+        border-top: 0;
+      }
+
+      .portrait .corner::after {
+        bottom: -8px;
+        right: -8px;
+        border-left: 0;
+        border-top: 0;
+      }
+
+      .portrait:hover::before,
+      .portrait:hover::after,
+      .portrait:hover .corner::before,
+      .portrait:hover .corner::after {
+        width: 40px;
+        height: 40px;
+      }
+
+      .portrait .tag {
+        position: absolute;
+        left: 50%;
+        bottom: -0.9rem;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: var(--bg-panel);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.3rem 0.9rem;
+        box-shadow: 0 4px 18px var(--glow);
+      }
+
+      /* ---------- capability grid ---------- */
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+        gap: 1.1rem;
+      }
+
+      .cell {
+        position: relative;
+        background: var(--bg-panel);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.5rem;
+        transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      }
+
+      .cell:hover {
+        border-color: var(--accent);
+        box-shadow: 0 0 24px var(--glow);
+        transform: translateY(-3px);
+      }
+
+      .cell .idx {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--text-faint);
+        letter-spacing: 0.14em;
+      }
+
+      .cell h3 {
+        font-size: 1.0625rem;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+        margin: 0.5rem 0 0.5rem;
+      }
+
+      .cell p {
+        font-size: 0.9375rem;
+        color: var(--text-dim);
+      }
+
+      /* ---------- projects ---------- */
 
       .project {
+        position: relative;
+        background: var(--bg-panel);
         border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.75rem;
-        background: var(--bg-raised);
+        border-radius: 12px;
+        padding: 1.9rem;
+        transition: border-color 0.25s, box-shadow 0.25s;
+        overflow: hidden;
+      }
+
+      .project::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--accent), transparent 80%);
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .project:hover {
+        border-color: var(--accent);
+        box-shadow: 0 0 28px var(--glow);
+      }
+
+      .project:hover::before {
+        opacity: 1;
       }
 
       .project + .project {
@@ -229,7 +651,7 @@
       }
 
       .project h3 {
-        font-size: 1.1875rem;
+        font-size: 1.25rem;
         font-weight: 650;
         letter-spacing: -0.01em;
       }
@@ -251,27 +673,25 @@
       .project p {
         color: var(--text-dim);
         margin-bottom: 1rem;
+        max-width: 56rem;
       }
 
       .tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.4rem 0.9rem;
+        gap: 0.45rem;
         list-style: none;
+      }
+
+      .tags li {
         font-family: var(--mono);
-        font-size: 0.75rem;
-        color: var(--text-faint);
-      }
-
-      .tags li::before {
-        content: "·";
-        margin-right: 0.9rem;
-        color: var(--border);
-      }
-
-      .tags li:first-child::before {
-        content: none;
-        margin: 0;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        color: var(--accent);
+        border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+        background: color-mix(in srgb, var(--accent) 7%, transparent);
+        border-radius: 999px;
+        padding: 0.18rem 0.7rem;
       }
 
       .project-link {
@@ -289,13 +709,24 @@
 
       /* ---------- about ---------- */
 
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 3rem;
+      }
+
+      @media (max-width: 860px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       .about p + p {
         margin-top: 1rem;
       }
 
       .about p {
         color: var(--text-dim);
-        max-width: 38rem;
       }
 
       .about strong {
@@ -304,55 +735,63 @@
       }
 
       .facts {
-        margin-top: 2rem;
-        border-top: 1px solid var(--border);
         list-style: none;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--bg-panel);
+        padding: 0.4rem 1.4rem;
+        align-self: start;
       }
 
       .facts li {
         display: grid;
-        grid-template-columns: 9rem 1fr;
-        gap: 1rem;
-        padding: 0.8rem 0;
-        border-bottom: 1px solid var(--border);
+        gap: 0.1rem;
+        padding: 0.9rem 0;
+      }
+
+      .facts li + li {
+        border-top: 1px solid var(--border);
       }
 
       .facts .label {
         font-family: var(--mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--text-faint);
-        padding-top: 0.2rem;
+        color: var(--accent);
       }
 
       .facts .value {
         color: var(--text-dim);
-      }
-
-      @media (max-width: 480px) {
-        .facts li {
-          grid-template-columns: 1fr;
-          gap: 0.15rem;
-        }
+        font-size: 0.9375rem;
       }
 
       /* ---------- contact ---------- */
 
-      .contact p {
-        color: var(--text-dim);
-        max-width: 36rem;
-        margin-bottom: 2rem;
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+        gap: 3rem;
       }
 
-      .contact a {
+      @media (max-width: 860px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .contact p {
+        color: var(--text-dim);
+        margin-bottom: 1.25rem;
+      }
+
+      .contact p a {
         color: var(--text);
       }
 
       form {
         display: grid;
         gap: 1rem;
-        max-width: 36rem;
       }
 
       .field {
@@ -362,25 +801,27 @@
 
       label {
         font-family: var(--mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-faint);
       }
 
       input,
       textarea {
-        background: var(--bg-raised);
+        background: var(--bg-panel);
         border: 1px solid var(--border);
-        border-radius: 6px;
+        border-radius: 8px;
         color: var(--text);
         font: inherit;
         padding: 0.65rem 0.85rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
       }
 
       input:focus,
       textarea:focus {
         border-color: var(--accent);
+        box-shadow: 0 0 12px var(--glow);
         outline: none;
       }
 
@@ -394,14 +835,16 @@
         background: var(--accent);
         color: var(--bg);
         border: 0;
-        border-radius: 6px;
+        border-radius: 8px;
         font: 600 0.9375rem var(--sans);
-        padding: 0.7rem 1.5rem;
+        padding: 0.72rem 1.6rem;
         cursor: pointer;
+        transition: box-shadow 0.2s, transform 0.2s;
       }
 
       button[type="submit"]:hover {
-        filter: brightness(1.1);
+        box-shadow: 0 0 22px var(--glow);
+        transform: translateY(-1px);
       }
 
       .honeypot {
@@ -415,7 +858,7 @@
       /* ---------- footer ---------- */
 
       footer {
-        margin-top: 5rem;
+        margin-top: 5.5rem;
         border-top: 1px solid var(--border);
         padding: 2rem 0 2.5rem;
       }
@@ -444,20 +887,57 @@
         gap: 1.25rem;
         list-style: none;
       }
+
+      /* ---------- motion safety ---------- */
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .orb,
+        .status .dot,
+        .hero h1 .grad {
+          animation: none;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        * {
+          transition-duration: 0.01ms !important;
+        }
+      }
     </style>
   </head>
   <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="orb orb-a" aria-hidden="true"></div>
+    <div class="orb orb-b" aria-hidden="true"></div>
+
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header>
       <div class="wrap">
         <nav class="site-nav" aria-label="Main">
           <a class="brand" href="/">yasin<span>@</span>alfamas</a>
-          <ul>
-            <li><a href="#work">work</a></li>
-            <li><a href="#about">about</a></li>
-            <li><a href="#contact">contact</a></li>
-          </ul>
+          <div class="nav-right">
+            <ul>
+              <li><a href="#capabilities">skills</a></li>
+              <li><a href="#work">work</a></li>
+              <li><a href="#about">about</a></li>
+              <li><a href="#contact">contact</a></li>
+            </ul>
+            <button id="theme-toggle" type="button" aria-label="Toggle dark mode">
+              <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" />
+              </svg>
+              <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+              </svg>
+            </button>
+          </div>
         </nav>
       </div>
     </header>
@@ -465,24 +945,94 @@
     <main id="main">
       <div class="wrap">
         <section class="hero" aria-label="Introduction">
-          <p class="kicker">Sydney, Australia</p>
-          <h1>MAS Yasin Arafat</h1>
-          <p class="role">
-            I build <strong>airline distribution and payment systems</strong> —
-            NDC and GDS integrations, booking engines, and the full-stack
-            TypeScript infrastructure around them.
-          </p>
-          <div class="hero-links">
-            <a href="https://github.com/alfamas" rel="me">github</a>
-            <a href="https://www.linkedin.com/in/masyasinarafat/" rel="me">linkedin</a>
-            <a href="mailto:arafat0951@gmail.com">email</a>
+          <div>
+            <p class="status"><span class="dot" aria-hidden="true"></span> Open to opportunities · Sydney, AU</p>
+            <h1>MAS Yasin <span class="grad">Arafat</span></h1>
+            <p class="role">
+              I build <strong>airline distribution and payment systems</strong> —
+              NDC and GDS integrations, booking engines, and the full-stack
+              TypeScript infrastructure around them.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#work">View my work</a>
+              <a class="btn btn-ghost" href="#contact">Get in touch</a>
+            </div>
+            <div class="hero-links">
+              <a href="https://github.com/alfamas" rel="me">github</a>
+              <a href="https://www.linkedin.com/in/masyasinarafat/" rel="me">linkedin</a>
+              <a href="mailto:arafat0951@gmail.com">email</a>
+            </div>
+          </div>
+          <div class="portrait">
+            <span class="corner" aria-hidden="true"></span>
+            <img src="images/pp1.jpg" alt="MAS Yasin Arafat at the Sydney Opera House" width="672" height="672" />
+            <span class="tag">travel · tech · engineer</span>
+          </div>
+        </section>
+
+        <section id="capabilities" aria-labelledby="cap-title">
+          <p class="kicker reveal" id="cap-title">// 01 — Capabilities</p>
+          <div class="grid">
+            <article class="cell reveal">
+              <span class="idx">[GDS]</span>
+              <h3>GDS Integration</h3>
+              <p>
+                Search, pricing, and booking against Amadeus, Sabre, and
+                Travelport — the classic global distribution systems that
+                power airline inventory.
+              </p>
+            </article>
+            <article class="cell reveal">
+              <span class="idx">[NDC]</span>
+              <h3>NDC &amp; LCC Distribution</h3>
+              <p>
+                IATA NDC implementations and direct low-cost-carrier
+                connections, covering the full order lifecycle from offer to
+                servicing.
+              </p>
+            </article>
+            <article class="cell reveal">
+              <span class="idx">[PAY]</span>
+              <h3>Payment Gateways</h3>
+              <p>
+                Wiring gateways such as CyberSource into booking flows —
+                authorization, capture, multi-currency handling, and failure
+                recovery.
+              </p>
+            </article>
+            <article class="cell reveal">
+              <span class="idx">[API]</span>
+              <h3>API Engineering</h3>
+              <p>
+                REST and SOAP integrations with third-party systems:
+                authentication, idempotent order handling, and versioned
+                contracts.
+              </p>
+            </article>
+            <article class="cell reveal">
+              <span class="idx">[STACK]</span>
+              <h3>Full-Stack TypeScript</h3>
+              <p>
+                Node.js and Bun services with Hono, Next.js frontends,
+                PostgreSQL and Redis — from schema to UI.
+              </p>
+            </article>
+            <article class="cell reveal">
+              <span class="idx">[OPS]</span>
+              <h3>Reliability &amp; Observability</h3>
+              <p>
+                Rate limiting, circuit breakers, retries with backoff,
+                OpenTelemetry tracing, and Prometheus metrics — so bookings
+                don't fail quietly.
+              </p>
+            </article>
           </div>
         </section>
 
         <section id="work" aria-labelledby="work-title">
-          <p class="kicker" id="work-title">Selected work</p>
+          <p class="kicker reveal" id="work-title">// 02 — Repositories</p>
 
-          <article class="project">
+          <article class="project reveal">
             <div class="project-head">
               <h3>
                 <a href="https://github.com/alfamas/verteil-node-sdk">verteil-node-sdk</a>
@@ -505,13 +1055,14 @@
               <li>OAuth2</li>
               <li>Redis</li>
               <li>OpenTelemetry</li>
+              <li>Prometheus</li>
             </ul>
             <a class="project-link" href="https://github.com/alfamas/verteil-node-sdk"
               >View source →</a
             >
           </article>
 
-          <article class="project">
+          <article class="project reveal">
             <div class="project-head">
               <h3><a href="https://github.com/alfamas/zerotrust">zerotrust</a></h3>
               <span class="repo">github.com/alfamas/zerotrust</span>
@@ -536,72 +1087,115 @@
               >View source →</a
             >
           </article>
+
+          <article class="project reveal">
+            <div class="project-head">
+              <h3>
+                <a href="https://github.com/alfamas/alfamas.github.io">alfamas.github.io</a>
+              </h3>
+              <span class="repo">github.com/alfamas/alfamas.github.io</span>
+            </div>
+            <p>
+              This site. A single static page with no build step, no
+              frameworks, and no external requests — system fonts, inline CSS
+              and SVG, a light/dark theme toggle, and scroll animations that
+              respect <code>prefers-reduced-motion</code>.
+            </p>
+            <ul class="tags" aria-label="Technologies">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Vanilla JS</li>
+              <li>GitHub Pages</li>
+            </ul>
+            <a class="project-link" href="https://github.com/alfamas/alfamas.github.io"
+              >View source →</a
+            >
+          </article>
         </section>
 
         <section id="about" class="about" aria-labelledby="about-title">
-          <p class="kicker" id="about-title">About</p>
-          <p>
-            I work in travel technology — the systems that search, price, and
-            book flights. That means integrating
-            <strong>GDS platforms</strong> (Amadeus, Sabre, Travelport),
-            implementing <strong>IATA NDC</strong>, connecting low-cost
-            carriers, and wiring payment gateways such as CyberSource into
-            booking flows.
-          </p>
-          <p>
-            Day to day that's API engineering: REST and SOAP integrations,
-            authentication, idempotent order handling, and the operational
-            concerns — rate limits, retries, observability — that keep
-            bookings from failing quietly.
-          </p>
-          <ul class="facts">
-            <li>
-              <span class="label">Focus</span>
-              <span class="value">NDC/GDS integration, payments, booking systems</span>
-            </li>
-            <li>
-              <span class="label">Stack</span>
-              <span class="value">TypeScript, Node.js, Hono, Next.js, PostgreSQL, Redis</span>
-            </li>
-            <li>
-              <span class="label">Education</span>
-              <span class="value"
-                >Bachelor of Business (Information Systems / Hospitality
-                Management), Canterbury Institute of Management, Sydney</span
-              >
-            </li>
-            <li>
-              <span class="label">Location</span>
-              <span class="value">Sydney, Australia</span>
-            </li>
-          </ul>
+          <p class="kicker reveal" id="about-title">// 03 — About</p>
+          <div class="about-grid">
+            <div class="reveal">
+              <p>
+                I work in travel technology — the systems that search, price,
+                and book flights. That means integrating
+                <strong>GDS platforms</strong> (Amadeus, Sabre, Travelport),
+                implementing <strong>IATA NDC</strong>, connecting low-cost
+                carriers, and wiring payment gateways such as CyberSource into
+                booking flows.
+              </p>
+              <p>
+                Day to day that's API engineering: REST and SOAP integrations,
+                authentication, idempotent order handling, and the operational
+                concerns — rate limits, retries, observability — that keep
+                bookings from failing quietly.
+              </p>
+              <p>
+                Outside the airline domain I build full-stack TypeScript
+                systems: my <strong>zerotrust</strong> starter covers
+                authentication (OAuth, passkeys, MFA), multi-tenant
+                organizations, billing, and the security hardening that
+                production SaaS needs.
+              </p>
+            </div>
+            <ul class="facts reveal">
+              <li>
+                <span class="label">Focus</span>
+                <span class="value">NDC/GDS integration, payments, booking systems</span>
+              </li>
+              <li>
+                <span class="label">Stack</span>
+                <span class="value">TypeScript, Node.js, Hono, Next.js, PostgreSQL, Redis</span>
+              </li>
+              <li>
+                <span class="label">Education</span>
+                <span class="value"
+                  >Bachelor of Business (Information Systems / Hospitality
+                  Management), Canterbury Institute of Management, Sydney</span
+                >
+              </li>
+              <li>
+                <span class="label">Location</span>
+                <span class="value">Sydney, Australia</span>
+              </li>
+            </ul>
+          </div>
         </section>
 
         <section id="contact" class="contact" aria-labelledby="contact-title">
-          <p class="kicker" id="contact-title">Contact</p>
-          <p>
-            The fastest way to reach me is
-            <a href="mailto:arafat0951@gmail.com">arafat0951@gmail.com</a>, or
-            use the form below.
-          </p>
-          <form action="https://formspree.io/f/mjkoqlaz" method="POST">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required autocomplete="name" />
+          <p class="kicker reveal" id="contact-title">// 04 — Contact</p>
+          <div class="contact-grid">
+            <div class="reveal">
+              <p>
+                Whether it's an NDC integration, a payment flow, or a
+                full-stack build — I'm happy to talk.
+              </p>
+              <p>
+                The fastest way to reach me is
+                <a href="mailto:arafat0951@gmail.com">arafat0951@gmail.com</a>,
+                or use the form.
+              </p>
             </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required autocomplete="email" />
-            </div>
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-            <div class="honeypot" aria-hidden="true">
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
-            </div>
-            <button type="submit">Send message</button>
-          </form>
+            <form class="reveal" action="https://formspree.io/f/mjkoqlaz" method="POST">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <div class="honeypot" aria-hidden="true">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </div>
+              <button type="submit">Send message</button>
+            </form>
+          </div>
         </section>
       </div>
     </main>
@@ -618,5 +1212,46 @@
         </ul>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.getElementById("theme-toggle");
+        toggle.addEventListener("click", function () {
+          var dark = root.dataset.theme === "dark";
+          if (dark) {
+            delete root.dataset.theme;
+          } else {
+            root.dataset.theme = "dark";
+          }
+          try {
+            localStorage.setItem("theme", dark ? "light" : "dark");
+          } catch (e) {}
+        });
+
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var items = document.querySelectorAll(".reveal");
+        if (reduced || !("IntersectionObserver" in window)) {
+          items.forEach(function (el) {
+            el.classList.add("in");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        items.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>
