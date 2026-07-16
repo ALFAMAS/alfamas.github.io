@@ -724,6 +724,22 @@
         padding: 0.16rem 0.6rem;
       }
 
+      .dev-badge {
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+        margin-left: 0.6rem;
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        border: 1px solid var(--border-strong);
+        border-radius: 999px;
+        padding: 0.16rem 0.6rem;
+      }
+
       .live-badge .dot {
         width: 6px;
         height: 6px;
@@ -1210,6 +1226,26 @@
               >View source →</a
             >
           </article>
+
+          <article class="project reveal">
+            <div class="project-head">
+              <h3>
+                EzyRoster
+                <span class="dev-badge">In development</span>
+              </h3>
+            </div>
+            <p>
+              Compliance-first rostering, time and attendance, and Modern
+              Award interpretation for Australian small businesses, with
+              export-ready, award-coded timesheets for Xero, MYOB, and
+              Employment Hero.
+            </p>
+            <ul class="tags" aria-label="Technologies">
+              <li>Rostering</li>
+              <li>Award compliance</li>
+              <li>Time &amp; attendance</li>
+            </ul>
+          </article>
         </section>
 
         <section id="more-repos" aria-labelledby="more-title">
@@ -1224,26 +1260,10 @@
             </li>
             <li>
               <div>
-                <a href="https://github.com/alfamas/CYBS-test">CYBS-test</a>
-                <span class="desc">CyberSource payment gateway integration tests</span>
-              </div>
-              <span class="year">2024</span>
-            </li>
-            <li>
-              <div>
                 <a href="https://github.com/alfamas/Library-Management-PHP-MySql"
                   >Library-Management-PHP-MySql</a
                 >
                 <span class="desc">Library management system in PHP and MySQL</span>
-              </div>
-              <span class="year">2024</span>
-            </li>
-            <li>
-              <div>
-                <a href="https://github.com/alfamas/websocket-node-practise"
-                  >websocket-node-practise</a
-                >
-                <span class="desc">WebSocket experiments in Node.js</span>
               </div>
               <span class="year">2024</span>
             </li>
@@ -1259,6 +1279,13 @@
                 <span class="desc">Farming gameplay script for FiveM (QBCore)</span>
               </div>
               <span class="year">2023</span>
+            </li>
+            <li>
+              <div>
+                <a href="https://github.com/alfamas/qbcore-multi-css">qbcore-multi-css</a>
+                <span class="desc">FiveM (QBCore) resource</span>
+              </div>
+              <span class="year">2022</span>
             </li>
           </ul>
           <a class="project-link reveal" href="https://github.com/alfamas?tab=repositories"
